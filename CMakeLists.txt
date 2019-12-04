@@ -3,4 +3,4 @@ project(five_color C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(five_color main.c)
+add_executable(five_color main.c graph.c graph.h)
