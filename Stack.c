@@ -51,3 +51,8 @@ SOMMET *popStack(Stack *stack) {
 
 	return stack->vertices[--stack->size];
 }
+
+bool isStackEmpty(Stack *stack) {
+	assert(stack != NULL);
+	return stack->size == 0;
+}

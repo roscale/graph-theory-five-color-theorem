@@ -13,14 +13,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6c33dda4-2f31-473d-8cde-86a471664311" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Stack.c" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Stack.h" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testStack.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/graph.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/graph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stack.c" beforeDir="false" afterPath="$PROJECT_DIR$/Stack.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stack.h" beforeDir="false" afterPath="$PROJECT_DIR$/Stack.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testStack.c" beforeDir="false" afterPath="$PROJECT_DIR$/testStack.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -89,7 +85,8 @@
       <updated>1575489781614</updated>
       <workItem from="1575489784048" duration="1096000" />
       <workItem from="1575537654484" duration="1506000" />
-      <workItem from="1575554378308" duration="11176000" />
+      <workItem from="1575554378308" duration="11342000" />
+      <workItem from="1575631850583" duration="195000" />
     </task>
     <servers />
   </component>

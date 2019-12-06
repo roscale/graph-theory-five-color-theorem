@@ -15,6 +15,7 @@ int main() {
 	assert(pushStack(stack, &b) == true);
 	assert(pushStack(stack, &c) == true);
 	assert(pushStack(stack, &d) == true);
+	assert(isStackEmpty(stack) == false);
 
 	assert(popStack(stack) == &d);
 	assert(popStack(stack) == &c);
@@ -22,6 +23,7 @@ int main() {
 	assert(popStack(stack) == &a);
 	assert(popStack(stack) == NULL);
 	assert(popStack(stack) == NULL);
+	assert(isStackEmpty(stack) == true);
 
 	assert(pushStack(stack, &e) == true);
 	assert(popStack(stack) == &e);
