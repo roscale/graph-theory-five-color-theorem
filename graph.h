@@ -2,6 +2,8 @@
 #else
 #define GRAPHES_H
 
+#include <stdbool.h>
+
 #define MAX 10000
 
 struct eltadj {
@@ -13,6 +15,7 @@ struct eltadj {
 struct sommet {
    int label;
    int info;
+   int degree; // inner and outer degree
    struct sommet *suivant;
    struct eltadj *adj;
 };
@@ -39,7 +42,11 @@ int supprimerSommet(GRAPHE *, int label);
 
 int supprimerArc(GRAPHE *, int a, int b);
 
+bool addEdge(GRAPHE *g, int a, int b, int info);
+
 void supprimerGraphe(GRAPHE *);
+
+bool removeEdge(GRAPHE *g, int a, int b);
 
 void afficherGraphe(GRAPHE *);
 

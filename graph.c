@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdbool.h>
 #include "graph.h"
 
 void initialiserGraphe(GRAPHE *g) {
@@ -19,6 +20,7 @@ int ajouterSommet(GRAPHE *g, int info) {
 	} else {
 		pointeur->label = g->maxS;
 		pointeur->info = info;
+		pointeur->degree = 0;
 		pointeur->suivant = NULL;
 		pointeur->adj = NULL;
 		if (g->nbS == 0) {
@@ -120,11 +122,21 @@ int ajouterArc(GRAPHE *g, int a, int b, int info) {
 			padj->dest = b;
 			padj->info = info;
 			g->nbA++;
+			psommet->degree++;
 		}
 		return 0;
 	}
 }
 
+bool addEdge(GRAPHE *g, int a, int b, int info) {
+	if (ajouterArc(g, a, b, info) != 0) {
+		return false;
+	}
+	if (ajouterArc(g, b, a, info) != 0) {
+		return false;
+	}
+	return true;
+}
 
 int supprimerSommet(GRAPHE *g, int a) {
 	SOMMET *psommet, *precedent;
@@ -226,8 +238,19 @@ int supprimerArc(GRAPHE *g, int a, int b) {
 				return -1;
 			}
 		}
+		psommet->degree--;
 		return 0;
 	}
+}
+
+bool removeEdge(GRAPHE *g, int a, int b) {
+	if (supprimerArc(g, a, b) != 0) {
+		return false;
+	}
+	if (supprimerArc(g, b, a) != 0) {
+		return false;
+	}
+	return true;
 }
 
 void supprimerGraphe(GRAPHE *g) {
