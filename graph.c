@@ -165,11 +165,11 @@ int supprimerSommet(GRAPHE *g, int a) {
 			if (flag_premier_sommet == 1) g->premierSommet = psommet->suivant;
 			else precedent->suivant = psommet->suivant;
 			padj = psommet->adj;
-			free(psommet);
+			// free(psommet);
 			g->nbS--;
 			while (padj != NULL) {
 				suivant = padj->suivant;
-				free(padj);
+				// free(padj);
 				g->nbA--;
 				padj = suivant;
 			}
@@ -191,7 +191,7 @@ int supprimerSommet(GRAPHE *g, int a) {
 			if (padj != NULL) {
 				if (flag_premier_arc == 1) psommet->adj = padj->suivant;
 				else precedent_adj->suivant = padj->suivant;
-				free(padj);
+				// free(padj);
 				g->nbA--;
 			}
 			psommet = psommet->suivant;

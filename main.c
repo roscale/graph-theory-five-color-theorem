@@ -46,8 +46,18 @@ int main() {
 
 	// STEP 2
 	printf("----------In step2\n");
+	printf("Inside s4 : ");
+	for (int i = 0; i < s4->size; ++i)
+	{
+		printf("%d ",s4->vertices[i]->label );
+	}
+	printf("\n");
+
 	stack4ToStackD(graph, s4, sd, s5);
-	printf("Out step2\n");
+	printf("----------Out step2\n");
+
+	printf("Graph after step2:\n");
+	afficherGraphe(graph);
 
 	// STEP 3
 	assert(isStackEmpty(s4)); // deg(graph) >= 5
