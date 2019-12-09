@@ -28,4 +28,6 @@ void populateStacks(GRAPHE *graph, Stack *s4, Stack *s5);
 
 void mergeVertices(GRAPHE *graph, Stack *s5, Stack *sd);
 
+void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5);
+
 #endif //TOOLS_H

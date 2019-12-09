@@ -28,6 +28,7 @@ SOMMET *findVertexWithLabel(GRAPHE *graph, int label) {
 	return foundVertex;
 }
 
+
 bool vertexMatchesConditionsForS4(SOMMET *vertex) {
 	// Degree at most 4
 	return vertex->degree <= 4;
@@ -57,6 +58,25 @@ void populateStacks(GRAPHE *graph, Stack *s4, Stack *s5) {
 		else if (vertexMatchesConditionsForS5(graph, v)) {
 			pushStack(s5, v);
 		}
+	}
+}
+
+void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
+
+	for (SOMMET *v = graph->premierSommet; v != NULL; v = v->suivant) {
+		for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
+			printf("Dest : %d\n",padj->dest );
+			SOMMET *neighbour = findVertexWithLabel(graph, padj->dest);
+			if (vertexMatchesConditionsForS4(neighbour)) {
+			pushStack(s4, neighbour);
+			}
+			else if (vertexMatchesConditionsForS5(graph, neighbour)) {
+			pushStack(s5, neighbour);
+			}
+		}
+		pushStack(sd, v); 
+		graph->premierSommet = v->suivant;
+		
 	}
 }
 

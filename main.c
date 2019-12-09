@@ -45,7 +45,9 @@ int main() {
 	populateStacks(graph, s4, s5);
 
 	// STEP 2
-	// TODO
+	printf("----------In step2\n");
+	stack4ToStackD(graph, s4, sd, s5);
+	printf("Out step2\n");
 
 	// STEP 3
 	assert(isStackEmpty(s4)); // deg(graph) >= 5
