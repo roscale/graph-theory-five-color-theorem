@@ -18,6 +18,8 @@ bool pushStack(Stack *stack, SOMMET *vertex);
 
 SOMMET *popStack(Stack *stack);
 
+bool isVertexInStack(Stack *stack, SOMMET *vertex);
+
 bool isStackEmpty(Stack *stack);
 
 #endif //FIVE_COLOR_STACK_H

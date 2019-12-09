@@ -42,6 +42,19 @@ bool pushStack(Stack *stack, SOMMET *vertex) {
 	return true;
 }
 
+bool isVertexInStack(Stack *stack, SOMMET *vertex){
+	assert(stack != NULL && vertex != NULL);
+	SOMMET **v =  stack->vertices;
+	for (unsigned i = 0; v[i] != NULL && i < stack->size; ++i)
+	{
+		if (v[i]->label == vertex->label)
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 SOMMET *popStack(Stack *stack) {
 	assert(stack != NULL);
 

@@ -74,16 +74,16 @@ void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 		printf("\n");
 		v = popStack(s4);
 		for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
-			printf("Dest : %d\n",padj->dest );
+			printf("Dest : %d, info : %d\n",padj->dest, padj->info);
 			SOMMET *neighbour = findVertexWithLabel(graph, padj->dest);
-			if (vertexMatchesConditionsForS4(neighbour)) {
+			if (vertexMatchesConditionsForS4(neighbour) && !isVertexInStack(s4,neighbour)) {
 			pushStack(s4, neighbour);
 			}
-			else if (vertexMatchesConditionsForS5(graph, neighbour)) {
+			else if (vertexMatchesConditionsForS5(graph, neighbour)&& !isVertexInStack(s5,neighbour)) {
 			pushStack(s5, neighbour);
 			}
 		}
-		// printf("Out\n");
+		printf("Out\n");
 		printf("Inside s4 after : ");
 		for (int i = 0; i < s4->size; ++i)
 		{
