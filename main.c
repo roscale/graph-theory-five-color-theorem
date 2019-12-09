@@ -18,25 +18,22 @@ int main() {
 	GRAPHE *graph = malloc(sizeof(GRAPHE));
 	initialiserGraphe(graph);
 
-	int a = ajouterSommet(graph, 1);
-	int b = ajouterSommet(graph, 2);
-	int c = ajouterSommet(graph, 3);
-	int d = ajouterSommet(graph, 4);
-	int e = ajouterSommet(graph, 5);
-	int f = ajouterSommet(graph, 6);
+	// We should try this example in the end
+	// https://i.stack.imgur.com/rO3SR.png
+	// It is a planar graph with a minimum degree of 5
+
+	Position pa = {0, 0};
+	Position pb = {-1, -1};
+	Position pc = {1, -1};
+
+	SOMMET *a = ajouterSommet(graph, pa);
+	SOMMET *b = ajouterSommet(graph, pb);
+	SOMMET *c = ajouterSommet(graph, pc);
 
 	// Returns 0 on success
-	addEdge(graph, a, b, 0);
-	addEdge(graph, a, c, 0);
-	addEdge(graph, b, c, 0);
-
-	addEdge(graph, a, f, 0);
-	addEdge(graph, a, e, 0);
-	addEdge(graph, a, d, 0);
-	addEdge(graph, c, d, 0);
-	addEdge(graph, b, d, 0);
-	addEdge(graph, d, f, 0);
-	addEdge(graph, e, f, 0);
+	addEdge(graph, a, b);
+	addEdge(graph, a, c);
+	addEdge(graph, b, c);
 
 	printf("Initial graph:\n");
 	afficherGraphe(graph);
@@ -46,18 +43,18 @@ int main() {
 
 	// STEP 2
 	printf("----------In step2\n");
-	stack4ToStackD(graph, s4, sd, s5);
+//	stack4ToStackD(graph, s4, sd, s5);
 	printf("Out step2\n");
 
 	// STEP 3
-	assert(isStackEmpty(s4)); // deg(graph) >= 5
+//	assert(isStackEmpty(s4)); // deg(graph) >= 5
 
 	// The graph is empty
 	if (graph->nbS == 0) {
 		// STEP 5
 		// TODO
 	} else {
-		mergeVertices(graph, s5, sd);
+//		mergeVertices(graph, s5, sd);
 	}
 
 	return 0;

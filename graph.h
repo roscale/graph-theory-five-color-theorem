@@ -6,18 +6,24 @@
 
 #define MAX 10000
 
-struct eltadj {
-   int dest;
-   int info;
-   struct eltadj *suivant;
-};
+typedef struct {
+   double x, y;
+} Position;
 
 struct sommet {
    int label;
-   int info;
    int degree; // inner and outer degree
+   Position position;
    struct sommet *suivant;
    struct eltadj *adj;
+};
+
+struct eltadj {
+   struct sommet *vertex;
+   // The angle of the neighbour relative to this vertex
+   // From -pi/2 to pi/2 for now
+   double relative_angle;
+   struct eltadj *suivant;
 };
 
 struct graphe {
@@ -34,22 +40,22 @@ typedef struct eltadj ELTADJ;
 
 void initialiserGraphe(GRAPHE *);
 
-int ajouterSommet(GRAPHE *, int info);
+SOMMET * ajouterSommet(GRAPHE *g, Position position);
 
-int ajouterArc(GRAPHE *, int a, int b, int info);
+int ajouterArc(GRAPHE *g, SOMMET *a, SOMMET *b);
 
-int supprimerSommet(GRAPHE *, int label);
+int supprimerSommet(GRAPHE *g, SOMMET *a);
 
-int supprimerArc(GRAPHE *, int a, int b);
+int supprimerArc(GRAPHE *g, SOMMET *a, SOMMET *b);
 
-bool addEdge(GRAPHE *g, int a, int b, int info);
+bool addEdge(GRAPHE *g, SOMMET *a, SOMMET *b);
 
 void supprimerGraphe(GRAPHE *);
 
-bool removeEdge(GRAPHE *g, int a, int b);
+bool removeEdge(GRAPHE *g, SOMMET *a, SOMMET *b);
 
 void afficherGraphe(GRAPHE *);
 
-int lireFichier(char *nomf, GRAPHE *);
+//int lireFichier(char *nomf, GRAPHE *);
 
 #endif

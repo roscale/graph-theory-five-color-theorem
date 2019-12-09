@@ -39,10 +39,9 @@ bool vertexMatchesConditionsForS5(GRAPHE *graph, SOMMET *vertex) {
 	if (vertex->degree == 5) {
 		// and at least one adjacent vertex with degree at most six
 		for (ELTADJ *adj = vertex->adj; adj != NULL; adj = adj->suivant) {
-			SOMMET *neighbour = findVertexWithLabel(graph, adj->dest);
-			printf("Neighbour of %i: %i\n", vertex->label, neighbour->label);
+			printf("Neighbour of %i: %i\n", vertex->label, adj->vertex->label);
 
-			if (neighbour->degree <= 6) {
+			if (adj->vertex->degree <= 6) {
 				return true;
 			}
 		}
@@ -63,21 +62,20 @@ void populateStacks(GRAPHE *graph, Stack *s4, Stack *s5) {
 
 void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 
-	for (SOMMET *v = graph->premierSommet; v != NULL; v = v->suivant) {
-		for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
-			printf("Dest : %d\n",padj->dest );
-			SOMMET *neighbour = findVertexWithLabel(graph, padj->dest);
-			if (vertexMatchesConditionsForS4(neighbour)) {
-			pushStack(s4, neighbour);
-			}
-			else if (vertexMatchesConditionsForS5(graph, neighbour)) {
-			pushStack(s5, neighbour);
-			}
-		}
-		pushStack(sd, v); 
-		graph->premierSommet = v->suivant;
-		
-	}
+//	for (SOMMET *v = graph->premierSommet; v != NULL; v = v->suivant) {
+//		for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
+//			printf("Dest : %d\n",padj->dest );
+//			SOMMET *neighbour = findVertexWithLabel(graph, padj->dest);
+//			if (vertexMatchesConditionsForS4(neighbour)) {
+//			pushStack(s4, neighbour);
+//			}
+//			else if (vertexMatchesConditionsForS5(graph, neighbour)) {
+//			pushStack(s5, neighbour);
+//			}
+//		}
+//		pushStack(sd, v);
+//		graph->premierSommet = v->suivant;
+//	}
 }
 
 void mergeVertices(GRAPHE *graph, Stack *s5, Stack *sd) {
