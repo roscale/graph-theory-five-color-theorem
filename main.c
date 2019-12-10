@@ -15,7 +15,7 @@ int main() {
 	Stack *sd = createStack(100);
 	Stack *sTrash = createStack(100);
 
-	// Graph example 1
+	// ------------------------------------------ Graph example 1 ------------------------------------------
 	GRAPHE *graph = malloc(sizeof(GRAPHE));
 	initialiserGraphe(graph);
 
@@ -43,7 +43,7 @@ int main() {
 	addEdge(graph, d, f);
 	addEdge(graph, e, f);
 
-	// Graph exemple 2 ( 5-complet )
+	//  ------------------------------------------ Graph exemple 2 ( 5-complet )  ------------------------------------------
 	// https://i.stack.imgur.com/rO3SR.png
 	// It is a planar graph with a minimum degree of 5
 	GRAPHE *graph2 = malloc(sizeof(GRAPHE));
@@ -104,91 +104,75 @@ int main() {
 
 	addEdge(graph2, k2, j2);
 
+	//  ------------------------------------------ Graph exemple 3 ( 3-complet )  ------------------------------------------
+	//https://www.cs.sfu.ca/~ggbaker/zju/math/planar.html (Q3)
+	GRAPHE *graph3 = malloc(sizeof(GRAPHE));
+	initialiserGraphe(graph3);
+
+	SOMMET *a3 = ajouterSommet(graph3, placeholder);
+	SOMMET *b3 = ajouterSommet(graph3, placeholder);
+	SOMMET *c3 = ajouterSommet(graph3, placeholder);
+	SOMMET *d3 = ajouterSommet(graph3, placeholder);
+	SOMMET *e3 = ajouterSommet(graph3, placeholder);
+	SOMMET *f3 = ajouterSommet(graph3, placeholder);
+	SOMMET *g3 = ajouterSommet(graph3, placeholder);
+	SOMMET *h3 = ajouterSommet(graph3, placeholder);
+
+	// Returns 0 on success
+	addEdge(graph3, a3, b3);
+	addEdge(graph3, a3, d3);
+	addEdge(graph3, a3, e3);
+
+	addEdge(graph3, d3, h3);
+	
+	addEdge(graph3, c3, b3);
+	addEdge(graph3, c3, d3);
+	addEdge(graph3, c3, g3);
+
+	addEdge(graph3, b3, f3);
+
+	addEdge(graph3, e3, f3);
+	addEdge(graph3, e3, h3);
+
+	addEdge(graph3, g3, f3);
+	addEdge(graph3, g3, h3);
+
 	printf("Initial graph:\n");
-	afficherGraphe(graph);
+	// afficherGraphe(graph);
 	// afficherGraphe(graph2);
+	afficherGraphe(graph3);
 
 	// STEP 1
-	populateStacks(graph, s4, s5);
+	// populateStacks(graph, s4, s5);
 	// populateStacks(graph2, s4, s5);
+	populateStacks(graph3, s4, s5);
 
 	// STEP 2
-	// printf("----------In step2\n");
-	// printf("Inside s4 : ");
-	// for (int i = 0; i < s4->size; ++i)
-	// {
-	// 	printf("%d ",s4->vertices[i]->label );
-	// }
-	// printf("\n");
-	// printf("Inside s5 : ");
-	// for (int i = 0; i < s5->size; ++i)
-	// {
-	// 	printf("%d ",s5->vertices[i]->label );
-	// }
-	// printf("\n");
-	// printf("Inside sd : ");
-	// for (int i = 0; i < sd->size; ++i)
-	// {
-	// 	printf("%d ",sd->vertices[i]->label );
-	// }
-	// printf("\n");
 
-	stack4ToStackD(graph, s4, sd, s5);
+
+	// stack4ToStackD(graph, s4, sd, s5);
 	// stack4ToStackD(graph2, s4, sd, s5);
-	// printf("----------Out step2\n");
-	// printf("Inside s4 : ");
-	// for (int i = 0; i < s4->size; ++i)
-	// {
-	// 	printf("%d ",s4->vertices[i]->label );
-	// }
-	// printf("\n");
-	// printf("Inside s5 : ");
-	// for (int i = 0; i < s5->size; ++i)
-	// {
-	// 	printf("%d ",s5->vertices[i]->label );
-	// }
-	// printf("\n");
-	// printf("Inside sd : ");
-	// for (int i = 0; i < sd->size; ++i)
-	// {
-	// 	printf("%d ",sd->vertices[i]->label );
-	// }
-	// printf("\n");
-
-	// printf("Graph after step2:\n");
-	// afficherGraphe(graph);
-	// printf("graph nbs : %d, nba : %d, maxS : %d\n", graph->nbS, graph->nbA, graph->maxS);
-	// afficherGraphe(graph2);
+	stack4ToStackD(graph3, s4, sd, s5);
+	
 
 	// STEP 3
 	assert(isStackEmpty(s4)); // deg(graph) >= 5
 
 	// The graph is empty
-	if (graph->nbS == 0) {
+	if (graph3->nbS == 0) {
 		// STEP 5
 		
 		SOMMET *v;
 		while (!isStackEmpty(sd)) {
 			v = popStack(sd);
-			
-			// printf("neighbour of %d colors = [ ", v->label);
 			Color c[5] = {0, 1, 2, 3, 4};
 			for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
-				// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
-				// printf("%d ", padj->vertex->info );
 				if(padj->vertex->info >= 0 && padj->vertex->info < 5){
 					c[padj->vertex->info] = -1;
 				}
 			}
-			// printf("]\n");
-			// printf("Colors : ");
-			// for (int i = 0; i < 5; ++i)
-			// {
-			// 	printf("%d",c[i] );
-			// }
-			// printf("\n");
+
 			v->info = getColorFromArray(c);
-			// printf("Color of %d : %d\n", v->label, v->info );
 			pushStack(sTrash, v);
 		}
 
@@ -199,8 +183,9 @@ int main() {
 		}
 		printf("\n");
 	} else {
-		mergeVertices(graph, s5, sd);
+		// mergeVertices(graph, s5, sd);
 		// mergeVertices(graph2, s5, sd);
+		mergeVertices(graph3, s5, sd);
 	}
 
 	
