@@ -67,3 +67,17 @@ void mergeVertices(GRAPHE *graph, Stack *s5, Stack *sd) {
 	assert(!isStackEmpty(s5));
 	SOMMET *v = popStack(s5);
 }
+
+Color getColorFromArray(Color *colors){
+	assert(colors != NULL);
+	for (int i = 0; i < 5; ++i)
+	{
+			// printf("colors[%d] : %d ; colors[i] >= 0 : %d; %d\n",i, colors[i], ((int)colors[i]) >= 0, -1 > 1);
+		if ((int)colors[i] >= 0)
+		{
+			 return colors[i];
+		}
+	}
+
+	return colors[0];
+}

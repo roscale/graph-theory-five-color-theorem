@@ -20,4 +20,6 @@ void mergeVertices(GRAPHE *graph, Stack *s5, Stack *sd);
 
 void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5);
 
+Color getColorFromArray(Color *colors);
+
 #endif //TOOLS_H

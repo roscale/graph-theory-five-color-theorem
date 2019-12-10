@@ -113,95 +113,97 @@ int main() {
 	// populateStacks(graph2, s4, s5);
 
 	// STEP 2
-	printf("----------In step2\n");
-	printf("Inside s4 : ");
-	for (int i = 0; i < s4->size; ++i)
-	{
-		printf("%d ",s4->vertices[i]->label );
-	}
-	printf("\n");
-	printf("Inside s5 : ");
-	for (int i = 0; i < s5->size; ++i)
-	{
-		printf("%d ",s5->vertices[i]->label );
-	}
-	printf("\n");
-	printf("Inside sd : ");
-	for (int i = 0; i < sd->size; ++i)
-	{
-		printf("%d ",sd->vertices[i]->label );
-	}
-	printf("\n");
+	// printf("----------In step2\n");
+	// printf("Inside s4 : ");
+	// for (int i = 0; i < s4->size; ++i)
+	// {
+	// 	printf("%d ",s4->vertices[i]->label );
+	// }
+	// printf("\n");
+	// printf("Inside s5 : ");
+	// for (int i = 0; i < s5->size; ++i)
+	// {
+	// 	printf("%d ",s5->vertices[i]->label );
+	// }
+	// printf("\n");
+	// printf("Inside sd : ");
+	// for (int i = 0; i < sd->size; ++i)
+	// {
+	// 	printf("%d ",sd->vertices[i]->label );
+	// }
+	// printf("\n");
 
 	stack4ToStackD(graph, s4, sd, s5);
 	// stack4ToStackD(graph2, s4, sd, s5);
-	printf("----------Out step2\n");
-	printf("Inside s4 : ");
-	for (int i = 0; i < s4->size; ++i)
-	{
-		printf("%d ",s4->vertices[i]->label );
-	}
-	printf("\n");
-	printf("Inside s5 : ");
-	for (int i = 0; i < s5->size; ++i)
-	{
-		printf("%d ",s5->vertices[i]->label );
-	}
-	printf("\n");
-	printf("Inside sd : ");
-	for (int i = 0; i < sd->size; ++i)
-	{
-		printf("%d ",sd->vertices[i]->label );
-	}
-	printf("\n");
+	// printf("----------Out step2\n");
+	// printf("Inside s4 : ");
+	// for (int i = 0; i < s4->size; ++i)
+	// {
+	// 	printf("%d ",s4->vertices[i]->label );
+	// }
+	// printf("\n");
+	// printf("Inside s5 : ");
+	// for (int i = 0; i < s5->size; ++i)
+	// {
+	// 	printf("%d ",s5->vertices[i]->label );
+	// }
+	// printf("\n");
+	// printf("Inside sd : ");
+	// for (int i = 0; i < sd->size; ++i)
+	// {
+	// 	printf("%d ",sd->vertices[i]->label );
+	// }
+	// printf("\n");
 
-	printf("Graph after step2:\n");
-	afficherGraphe(graph);
-	printf("graph nbs : %d, nba : %d, maxS : %d\n", graph->nbS, graph->nbA, graph->maxS);
+	// printf("Graph after step2:\n");
+	// afficherGraphe(graph);
+	// printf("graph nbs : %d, nba : %d, maxS : %d\n", graph->nbS, graph->nbA, graph->maxS);
 	// afficherGraphe(graph2);
 
 	// STEP 3
-//	assert(isStackEmpty(s4)); // deg(graph) >= 5
+	assert(isStackEmpty(s4)); // deg(graph) >= 5
 
 	// The graph is empty
 	if (graph->nbS == 0) {
 		// STEP 5
 		
 		SOMMET *v;
-		Color c[5] = {0, 1, 2, 3, 4}; // Create an array with all colors
-		Color temp[5];
 		while (!isStackEmpty(sd)) {
-			printf("Inside sd : ");
-			for (int i = 0; i < sd->size; ++i)
-			{
-				printf("%d ",sd->vertices[i]->label );
-			}
-			printf("\n");
-			printf("Inside sTrash : ");
-			for (int i = 0; i < sTrash->size; ++i)
-			{
-				printf("%d ",sTrash->vertices[i]->label );
-			}
-			printf("\n");
 			v = popStack(sd);
 			
-			printf("neighbour of %d colors = [ ", v->label);
+			// printf("neighbour of %d colors = [ ", v->label);
+			Color c[5] = {0, 1, 2, 3, 4};
 			for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
 				// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
-				printf("%d\n", padj->vertex->label );
-				// SOMMET *neighbour = findVertexWithLabelInsideStack(sTrash, padj->dest);
-				// if (neighbour == NULL){
-				// 	SOMMET *neighbour = findVertexWithLabelInsideStack(sd, padj->dest);
-				// }
-				// printf(" N : %d -> %d ", padj->dest, neighbour->info);
+				// printf("%d ", padj->vertex->info );
+				if(padj->vertex->info >= 0 && padj->vertex->info < 5){
+					c[padj->vertex->info] = -1;
+				}
 			}
-			printf("]\n");
+			// printf("]\n");
+			// printf("Colors : ");
+			// for (int i = 0; i < 5; ++i)
+			// {
+			// 	printf("%d",c[i] );
+			// }
+			// printf("\n");
+			v->info = getColorFromArray(c);
+			// printf("Color of %d : %d\n", v->label, v->info );
 			pushStack(sTrash, v);
 		}
+
+		printf("----------- Affichage des couleurs des diff somment : \n");
+		while (!isStackEmpty(sTrash)){
+			SOMMET *v = popStack(sTrash);
+			printf("v(%d):%s ", v->label, colorToString(v->info) );
+		}
+		printf("\n");
 	} else {
 		mergeVertices(graph, s5, sd);
 		// mergeVertices(graph2, s5, sd);
 	}
+
+	
 
 	return 0;
 }

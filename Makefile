@@ -1,9 +1,9 @@
 ## Variables
 # Tools & flags
 CC=gcc
-CFLAGS=--std=c99 --pedantic -Wall -Wextra -Wmissing-prototypes -g
+CFLAGS=--std=c99 --pedantic -Wall -Wextra -Wmissing-prototypes -g 
 LD=gcc
-LDFLAGS=
+LDFLAGS=-lm
 
 # Files
 EXEC=graph_coloring
