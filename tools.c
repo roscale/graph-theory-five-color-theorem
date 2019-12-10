@@ -19,7 +19,7 @@ SOMMET *findVertexWithLabel(GRAPHE *graph, int label) {
 	     v != NULL; v = v->suivant) {
 		// Search the vertex with the same label
 		// Each vertex has a unique label
-		printf("Actual label : %d\n",v->label );
+		// printf("Actual label : %d\n",v->label );
 		if (v->label == label) {
 			foundVertex = v;
 			break;
@@ -66,15 +66,15 @@ void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 
 	SOMMET *v;
 	while (!isStackEmpty(s4)) {
-		printf("Inside s4 : ");
-		for (int i = 0; i < s4->size; ++i)
-		{
-			printf("%d ",s4->vertices[i]->label );
-		}
-		printf("\n");
+		// printf("Inside s4 : ");
+		// for (int i = 0; i < s4->size; ++i)
+		// {
+		// 	printf("%d ",s4->vertices[i]->label );
+		// }
+		// printf("\n");
 		v = popStack(s4);
 		for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
-			printf("Dest : %d, info : %d\n",padj->dest, padj->info);
+			// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
 			SOMMET *neighbour = findVertexWithLabel(graph, padj->dest);
 			if (vertexMatchesConditionsForS4(neighbour) && !isVertexInStack(s4,neighbour)) {
 			pushStack(s4, neighbour);
@@ -83,38 +83,17 @@ void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 			pushStack(s5, neighbour);
 			}
 		}
-		printf("Out\n");
-		printf("Inside s4 after : ");
-		for (int i = 0; i < s4->size; ++i)
-		{
-			printf("%d ",s4->vertices[i]->label );
-		}
-		printf("\n");
+		// printf("Out\n");
+		// printf("Inside s4 after : ");
+		// for (int i = 0; i < s4->size; ++i)
+		// {
+		// 	printf("%d ",s4->vertices[i]->label );
+		// }
+		// printf("\n");
 		supprimerSommet(graph, v->label);
-		pushStack(sd, v); 
-		// graph->premierSommet = v->suivant;
-		// // v = graph->premierSommet;
+		pushStack(sd, v);
 		
 	}
-
-	/*for (SOMMET *v = graph->premierSommet; v != NULL; v = v->suivant) {
-		for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
-			// printf("Dest : %d\n",padj->dest );
-			SOMMET *neighbour = findVertexWithLabel(graph, padj->dest);
-			if (vertexMatchesConditionsForS4(neighbour)) {
-			pushStack(s4, neighbour);
-			}
-			else if (vertexMatchesConditionsForS5(graph, neighbour)) {
-			pushStack(s5, neighbour);
-			}
-		}
-		// printf("Out\n");
-		pushStack(sd, v); 
-		supprimerSommet(graph, v->label);
-		// graph->premierSommet = v->suivant;
-		// // v = graph->premierSommet;
-		
-	}*/
 }
 
 void mergeVertices(GRAPHE *graph, Stack *s5, Stack *sd) {
