@@ -113,10 +113,40 @@ int main() {
 		printf("%d ",s4->vertices[i]->label );
 	}
 	printf("\n");
+	printf("Inside s5 : ");
+	for (int i = 0; i < s5->size; ++i)
+	{
+		printf("%d ",s5->vertices[i]->label );
+	}
+	printf("\n");
+	printf("Inside sd : ");
+	for (int i = 0; i < sd->size; ++i)
+	{
+		printf("%d ",sd->vertices[i]->label );
+	}
+	printf("\n");
 
 	// stack4ToStackD(graph, s4, sd, s5);
 	stack4ToStackD(graph2, s4, sd, s5);
 	printf("----------Out step2\n");
+	printf("Inside s4 : ");
+	for (int i = 0; i < s4->size; ++i)
+	{
+		printf("%d ",s4->vertices[i]->label );
+	}
+	printf("\n");
+	printf("Inside s5 : ");
+	for (int i = 0; i < s5->size; ++i)
+	{
+		printf("%d ",s5->vertices[i]->label );
+	}
+	printf("\n");
+	printf("Inside sd : ");
+	for (int i = 0; i < sd->size; ++i)
+	{
+		printf("%d ",sd->vertices[i]->label );
+	}
+	printf("\n");
 
 	printf("Graph after step2:\n");
 	// afficherGraphe(graph);
