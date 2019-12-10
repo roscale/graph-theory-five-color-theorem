@@ -192,6 +192,7 @@ int supprimerSommet(GRAPHE *g, int a) {
 				if (flag_premier_arc == 1) psommet->adj = padj->suivant;
 				else precedent_adj->suivant = padj->suivant;
 				// free(padj);
+				psommet->degree--;
 				g->nbA--;
 			}
 			psommet = psommet->suivant;
@@ -297,6 +298,7 @@ void afficherGraphe(GRAPHE *g) {
 		} while (psommet != NULL);
 	}
 }
+
 
 int lireFichier(char *nomf, GRAPHE *g) {
 	FILE *fp;
