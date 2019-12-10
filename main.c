@@ -13,17 +13,18 @@ int main() {
 	Stack *s4 = createStack(100);
 	Stack *s5 = createStack(100);
 	Stack *sd = createStack(100);
+	Stack *sTrash = createStack(100);
 
 	// Graph example 1
 	GRAPHE *graph = malloc(sizeof(GRAPHE));
 	initialiserGraphe(graph);
 
-	int a = ajouterSommet(graph, 1);
-	int b = ajouterSommet(graph, 2);
-	int c = ajouterSommet(graph, 3);
-	int d = ajouterSommet(graph, 4);
-	int e = ajouterSommet(graph, 5);
-	int f = ajouterSommet(graph, 6);
+	int a = ajouterSommet(graph, -1);
+	int b = ajouterSommet(graph, -1);
+	int c = ajouterSommet(graph, -1);
+	int d = ajouterSommet(graph, -1);
+	int e = ajouterSommet(graph, -1);
+	int f = ajouterSommet(graph, -1);
 
 	// Returns 0 on success
 	addEdge(graph, a, b, 0);
@@ -159,7 +160,38 @@ int main() {
 	// The graph is empty
 	if (graph->nbS == 0) {
 		// STEP 5
-		// TODO
+		
+		SOMMET *v;
+		Color c[5] = {0, 1, 2, 3, 4}; // Create an array with all colors
+		Color temp[5];
+		while (!isStackEmpty(sd)) {
+			printf("Inside sd : ");
+			for (int i = 0; i < sd->size; ++i)
+			{
+				printf("%d ",sd->vertices[i]->label );
+			}
+			printf("\n");
+			printf("Inside sTrash : ");
+			for (int i = 0; i < sTrash->size; ++i)
+			{
+				printf("%d ",sTrash->vertices[i]->label );
+			}
+			printf("\n");
+			v = popStack(sd);
+			
+			printf("neighbour of %d colors = [ ", v->label);
+			for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
+				// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
+				printf("%d\n", padj->dest );
+				// SOMMET *neighbour = findVertexWithLabelInsideStack(sTrash, padj->dest);
+				// if (neighbour == NULL){
+				// 	SOMMET *neighbour = findVertexWithLabelInsideStack(sd, padj->dest);
+				// }
+				// printf(" N : %d -> %d ", padj->dest, neighbour->info);
+			}
+			printf("]\n");
+			pushStack(sTrash, v);
+		}
 	} else {
 		mergeVertices(graph, s5, sd);
 		// mergeVertices(graph2, s5, sd);

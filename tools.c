@@ -14,7 +14,8 @@ SOMMET *findVertexWithLabel(GRAPHE *graph, int label) {
 			break;
 		}
 	}
-	assert(foundVertex != NULL);
+	// assert(foundVertex != NULL);
+	printf("Attention foundVertex == NULL\n");
 	return foundVertex;
 }
 

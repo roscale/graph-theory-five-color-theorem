@@ -21,7 +21,7 @@ main.o: main.c graph.h Stack.h tools.h
 graph.o: graph.c graph.h
 	$(CC) -c graph.c -o graph.o  $(CFLAGS)
 
-Stack.o: Stack.c Stack.h
+Stack.o: Stack.c Stack.h graph.h
 	$(CC) -c Stack.c -o Stack.o  $(CFLAGS)
 
 tools.o: tools.c tools.h Stack.h graph.h

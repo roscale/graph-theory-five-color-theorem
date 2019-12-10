@@ -1,4 +1,5 @@
 #include "Stack.h"
+#include "graph.h"
 #include <stdlib.h>
 #include <assert.h>
 
@@ -68,4 +69,18 @@ SOMMET *popStack(Stack *stack) {
 bool isStackEmpty(Stack *stack) {
 	assert(stack != NULL);
 	return stack->size == 0;
+}
+
+SOMMET *findVertexWithLabelInsideStack(Stack *stack, int label) {
+	SOMMET *foundVertex = NULL, *v;
+	for (int i = 0; i < stack->size; ++i){
+		v = stack->vertices[i];
+		if (v->label == label) {
+			foundVertex = v;
+			break;
+		}
+	}
+	// assert(foundVertex != NULL);
+	// printf("Attention foundVertex == NULL\n");
+	return foundVertex;
 }
