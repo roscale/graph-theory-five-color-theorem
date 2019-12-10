@@ -4,6 +4,7 @@
 
 #include <stdbool.h>
 #include <assert.h>
+#include <stddef.h>
 
 #define MAX 10000
 
@@ -25,7 +26,8 @@ struct sommet {
    int degree; // inner and outer degree
    Position position;
    struct sommet *suivant;
-   struct eltadj *adj;
+   struct eltadj *adj; // circular list
+   size_t adjSize;
 };
 
 struct eltadj {

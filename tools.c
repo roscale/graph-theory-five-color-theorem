@@ -9,7 +9,8 @@ bool vertexMatchesConditionsForS5(GRAPHE *graph, SOMMET *vertex) {
 	// Degree five
 	if (vertex->degree == 5) {
 		// and at least one adjacent vertex with degree at most six
-		for (ELTADJ *adj = vertex->adj; adj != NULL; adj = adj->suivant) {
+		ELTADJ *adj = vertex->adj;
+		for (size_t i = 0; adj != NULL && i < vertex->adjSize; i++, adj = adj->suivant) {
 			printf("Neighbour of %i: %i\n", vertex->label, adj->vertex->label);
 
 			if (adj->vertex->degree <= 6) {
@@ -41,7 +42,9 @@ void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 		// }
 		// printf("\n");
 		v = popStack(s4);
-		for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
+
+		ELTADJ *padj = v->adj;
+		for (size_t i = 0; padj != NULL && i < v->adjSize; i++, padj = padj->suivant) {
 			// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
 			SOMMET *neighbour = padj->vertex;
 			if (vertexMatchesConditionsForS4(neighbour) && !isVertexInStack(s4,neighbour)) {

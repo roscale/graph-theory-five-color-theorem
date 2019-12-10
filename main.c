@@ -153,7 +153,6 @@ int main() {
 	// stack4ToStackD(graph, s4, sd, s5);
 	// stack4ToStackD(graph2, s4, sd, s5);
 	stack4ToStackD(graph3, s4, sd, s5);
-	
 
 	// STEP 3
 	assert(isStackEmpty(s4)); // deg(graph) >= 5
@@ -166,7 +165,10 @@ int main() {
 		while (!isStackEmpty(sd)) {
 			v = popStack(sd);
 			Color c[5] = {0, 1, 2, 3, 4};
-			for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
+			ELTADJ *padj = v->adj;
+			for (size_t i = 0; padj != NULL && i < v->adjSize; i++, padj = padj->suivant) {
+				// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
+				// printf("%d ", padj->vertex->info );
 				if(padj->vertex->info >= 0 && padj->vertex->info < 5){
 					c[padj->vertex->info] = -1;
 				}

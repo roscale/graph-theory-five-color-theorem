@@ -73,7 +73,7 @@ bool isStackEmpty(Stack *stack) {
 
 SOMMET *findVertexWithLabelInsideStack(Stack *stack, int label) {
 	SOMMET *foundVertex = NULL, *v;
-	for (int i = 0; i < stack->size; ++i){
+	for (size_t i = 0; i < stack->size; ++i){
 		v = stack->vertices[i];
 		if (v->label == label) {
 			foundVertex = v;
