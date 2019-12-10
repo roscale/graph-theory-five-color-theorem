@@ -19,84 +19,90 @@ int main() {
 	GRAPHE *graph = malloc(sizeof(GRAPHE));
 	initialiserGraphe(graph);
 
-	int a = ajouterSommet(graph, -1);
-	int b = ajouterSommet(graph, -1);
-	int c = ajouterSommet(graph, -1);
-	int d = ajouterSommet(graph, -1);
-	int e = ajouterSommet(graph, -1);
-	int f = ajouterSommet(graph, -1);
+	// TODO Give each vertex a position
+	Position placeholder = {0, 0};
+
+	// We receive pointers instead of labels
+	SOMMET *a = ajouterSommet(graph, placeholder);
+	SOMMET *b = ajouterSommet(graph, placeholder);
+	SOMMET *c = ajouterSommet(graph, placeholder);
+	SOMMET *d = ajouterSommet(graph, placeholder);
+	SOMMET *e = ajouterSommet(graph, placeholder);
+	SOMMET *f = ajouterSommet(graph, placeholder);
 
 	// Returns 0 on success
-	addEdge(graph, a, b, 0);
-	addEdge(graph, a, c, 0);
-	addEdge(graph, b, c, 0);
+	addEdge(graph, a, b);
+	addEdge(graph, a, c);
+	addEdge(graph, b, c);
 
-	addEdge(graph, a, f, 0);
-	addEdge(graph, a, e, 0);
-	addEdge(graph, a, d, 0);
-	addEdge(graph, c, d, 0);
-	addEdge(graph, b, d, 0);
-	addEdge(graph, d, f, 0);
-	addEdge(graph, e, f, 0);
+	addEdge(graph, a, f);
+	addEdge(graph, a, e);
+	addEdge(graph, a, d);
+	addEdge(graph, c, d);
+	addEdge(graph, b, d);
+	addEdge(graph, d, f);
+	addEdge(graph, e, f);
 
 	// Graph exemple 2 ( 5-complet )
+	// https://i.stack.imgur.com/rO3SR.png
+	// It is a planar graph with a minimum degree of 5
 	GRAPHE *graph2 = malloc(sizeof(GRAPHE));
 	initialiserGraphe(graph2);
 
-	int a2 = ajouterSommet(graph2, 1);
-	int b2 = ajouterSommet(graph2, 2);
-	int c2 = ajouterSommet(graph2, 3);
-	int d2 = ajouterSommet(graph2, 4);
-	int e2 = ajouterSommet(graph2, 5);
-	int f2 = ajouterSommet(graph2, 6);
-	int g2 = ajouterSommet(graph2, 7);
-	int h2 = ajouterSommet(graph2, 8);
-	int i2 = ajouterSommet(graph2, 9);
-	int j2 = ajouterSommet(graph2, 10);
-	int k2 = ajouterSommet(graph2, 11);
-	int l2 = ajouterSommet(graph2, 12);
+	SOMMET *a2 = ajouterSommet(graph2, placeholder);
+	SOMMET *b2 = ajouterSommet(graph2, placeholder);
+	SOMMET *c2 = ajouterSommet(graph2, placeholder);
+	SOMMET *d2 = ajouterSommet(graph2, placeholder);
+	SOMMET *e2 = ajouterSommet(graph2, placeholder);
+	SOMMET *f2 = ajouterSommet(graph2, placeholder);
+	SOMMET *g2 = ajouterSommet(graph2, placeholder);
+	SOMMET *h2 = ajouterSommet(graph2, placeholder);
+	SOMMET *i2 = ajouterSommet(graph2, placeholder);
+	SOMMET *j2 = ajouterSommet(graph2, placeholder);
+	SOMMET *k2 = ajouterSommet(graph2, placeholder);
+	SOMMET *l2 = ajouterSommet(graph2, placeholder);
 
 	// Returns 0 on success
-	addEdge(graph2, a2, b2, 0);
-	addEdge(graph2, a2, c2, 0);
-	addEdge(graph2, a2, d2, 0);
-	addEdge(graph2, a2, i2, 0);
-	addEdge(graph2, a2, h2, 0);
+	addEdge(graph2, a2, b2);
+	addEdge(graph2, a2, c2);
+	addEdge(graph2, a2, d2);
+	addEdge(graph2, a2, i2);
+	addEdge(graph2, a2, h2);
 
-	addEdge(graph2, b2, d2, 0);
-	addEdge(graph2, b2, e2, 0);
-	addEdge(graph2, b2, f2, 0);
-	addEdge(graph2, b2, c2, 0);
+	addEdge(graph2, b2, d2);
+	addEdge(graph2, b2, e2);
+	addEdge(graph2, b2, f2);
+	addEdge(graph2, b2, c2);
 
-	addEdge(graph2, c2, f2, 0);
-	addEdge(graph2, c2, g2, 0);
-	addEdge(graph2, c2, h2, 0);
+	addEdge(graph2, c2, f2);
+	addEdge(graph2, c2, g2);
+	addEdge(graph2, c2, h2);
 
-	addEdge(graph2, i2, j2, 0);
-	addEdge(graph2, i2, l2, 0);
-	addEdge(graph2, i2, d2, 0);
-	addEdge(graph2, i2, h2, 0);
+	addEdge(graph2, i2, j2);
+	addEdge(graph2, i2, l2);
+	addEdge(graph2, i2, d2);
+	addEdge(graph2, i2, h2);
 
-	addEdge(graph2, d2, j2, 0);
-	addEdge(graph2, d2, e2, 0);
+	addEdge(graph2, d2, j2);
+	addEdge(graph2, d2, e2);
 
-	addEdge(graph2, e2, j2, 0);
-	addEdge(graph2, e2, k2, 0);
-	addEdge(graph2, e2, f2, 0);
+	addEdge(graph2, e2, j2);
+	addEdge(graph2, e2, k2);
+	addEdge(graph2, e2, f2);
 
-	addEdge(graph2, f2, k2, 0);
-	addEdge(graph2, f2, g2, 0);
+	addEdge(graph2, f2, k2);
+	addEdge(graph2, f2, g2);
 
-	addEdge(graph2, g2, k2, 0);
-	addEdge(graph2, g2, l2, 0);
-	addEdge(graph2, g2, h2, 0);
+	addEdge(graph2, g2, k2);
+	addEdge(graph2, g2, l2);
+	addEdge(graph2, g2, h2);
 
-	addEdge(graph2, h2, l2, 0);
+	addEdge(graph2, h2, l2);
 
-	addEdge(graph2, l2, j2, 0);
-	addEdge(graph2, l2, k2, 0);
+	addEdge(graph2, l2, j2);
+	addEdge(graph2, l2, k2);
 
-	addEdge(graph2, k2, j2, 0);
+	addEdge(graph2, k2, j2);
 
 	printf("Initial graph:\n");
 	afficherGraphe(graph);
@@ -155,7 +161,7 @@ int main() {
 	// afficherGraphe(graph2);
 
 	// STEP 3
-	assert(isStackEmpty(s4)); // deg(graph) >= 5
+//	assert(isStackEmpty(s4)); // deg(graph) >= 5
 
 	// The graph is empty
 	if (graph->nbS == 0) {
@@ -182,7 +188,7 @@ int main() {
 			printf("neighbour of %d colors = [ ", v->label);
 			for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
 				// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
-				printf("%d\n", padj->dest );
+				printf("%d\n", padj->vertex->label );
 				// SOMMET *neighbour = findVertexWithLabelInsideStack(sTrash, padj->dest);
 				// if (neighbour == NULL){
 				// 	SOMMET *neighbour = findVertexWithLabelInsideStack(sd, padj->dest);

@@ -1,25 +1,5 @@
 #include "tools.h"
 
-// TODO Make the adjacency list have pointers to vertices, not labels.
-// Otherwise, we have a O(n^2) complexity
-SOMMET *findVertexWithLabel(GRAPHE *graph, int label) {
-	SOMMET *foundVertex = NULL;
-	for (SOMMET *v = graph->premierSommet;
-	     v != NULL; v = v->suivant) {
-		// Search the vertex with the same label
-		// Each vertex has a unique label
-		// printf("Actual label : %d\n",v->label );
-		if (v->label == label) {
-			foundVertex = v;
-			break;
-		}
-	}
-	// assert(foundVertex != NULL);
-	printf("Attention foundVertex == NULL\n");
-	return foundVertex;
-}
-
-
 bool vertexMatchesConditionsForS4(SOMMET *vertex) {
 	// Degree at most 4
 	return vertex->degree <= 4;
@@ -30,10 +10,9 @@ bool vertexMatchesConditionsForS5(GRAPHE *graph, SOMMET *vertex) {
 	if (vertex->degree == 5) {
 		// and at least one adjacent vertex with degree at most six
 		for (ELTADJ *adj = vertex->adj; adj != NULL; adj = adj->suivant) {
-			SOMMET *neighbour = findVertexWithLabel(graph, adj->dest);
-			printf("Neighbour of %i: %i\n", vertex->label, neighbour->label);
+			printf("Neighbour of %i: %i\n", vertex->label, adj->vertex->label);
 
-			if (neighbour->degree <= 6) {
+			if (adj->vertex->degree <= 6) {
 				return true;
 			}
 		}
@@ -53,7 +32,6 @@ void populateStacks(GRAPHE *graph, Stack *s4, Stack *s5) {
 }
 
 void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
-
 	SOMMET *v;
 	while (!isStackEmpty(s4)) {
 		// printf("Inside s4 : ");
@@ -65,7 +43,7 @@ void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 		v = popStack(s4);
 		for (ELTADJ *padj = v->adj; padj != NULL; padj = padj->suivant) {
 			// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
-			SOMMET *neighbour = findVertexWithLabel(graph, padj->dest);
+			SOMMET *neighbour = padj->vertex;
 			if (vertexMatchesConditionsForS4(neighbour) && !isVertexInStack(s4,neighbour)) {
 			pushStack(s4, neighbour);
 			}
@@ -80,9 +58,8 @@ void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 		// 	printf("%d ",s4->vertices[i]->label );
 		// }
 		// printf("\n");
-		supprimerSommet(graph, v->label);
+		supprimerSommet(graph, v);
 		pushStack(sd, v);
-		
 	}
 }
 
