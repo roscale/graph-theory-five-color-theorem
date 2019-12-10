@@ -3,18 +3,27 @@
 #define GRAPHES_H
 
 #include <stdbool.h>
+#include <assert.h>
 
 #define MAX 10000
 
+typedef enum Color_t {
+   RED,
+   GREEN,
+   BLUE,
+   YELLOW,
+   PURPLE
+}Color;
+
 struct eltadj {
    int dest;
-   int info;
+   Color info;
    struct eltadj *suivant;
 };
 
 struct sommet {
    int label;
-   int info;
+   Color info;
    int degree; // inner and outer degree
    struct sommet *suivant;
    struct eltadj *adj;
@@ -51,5 +60,7 @@ bool removeEdge(GRAPHE *g, int a, int b);
 void afficherGraphe(GRAPHE *);
 
 int lireFichier(char *nomf, GRAPHE *);
+
+const char *colorToString(Color color);
 
 #endif

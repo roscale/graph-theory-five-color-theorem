@@ -1,16 +1,5 @@
 #include "tools.h"
 
-const char *colorToString(Color color) {
-	switch (color) {
-		case RED: return "RED";
-		case GREEN: return "GREEN";
-		case BLUE: return "BLUE";
-		case YELLOW: return "YELLOW";
-		case PURPLE: return "PURPLE";
-		default: assert(false && "Invalid color");
-	}
-}
-
 // TODO Make the adjacency list have pointers to vertices, not labels.
 // Otherwise, we have a O(n^2) complexity
 SOMMET *findVertexWithLabel(GRAPHE *graph, int label) {

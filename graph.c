@@ -272,6 +272,18 @@ void supprimerGraphe(GRAPHE *g) {
 	initialiserGraphe(g);
 }
 
+const char *colorToString(Color color) {
+	switch (color) {
+		case RED: return "RED";
+		case GREEN: return "GREEN";
+		case BLUE: return "BLUE";
+		case YELLOW: return "YELLOW";
+		case PURPLE: return "PURPLE";
+		// default: assert(false && "Invalid color");
+		default: return "Unknown color";
+	}
+}
+
 void afficherGraphe(GRAPHE *g) {
 	SOMMET *psommet;
 	ELTADJ *padj;
@@ -281,15 +293,15 @@ void afficherGraphe(GRAPHE *g) {
 		psommet = g->premierSommet;
 		do {
 			printf("\n");
-			printf("Sommet de label: %d , info: %d\n", psommet->label,
-			       psommet->info);
+			printf("Sommet de label: %d , info: %s\n", psommet->label,
+			       colorToString(psommet->info));
 			if (psommet->adj == NULL)
 				printf(" -> ce sommet n'a aucun arc sortant\n ");
 			else {
 				padj = psommet->adj;
 				do {
-					printf(" -> arc de %d vers %d avec l'info. %d \n",
-					       psommet->label, padj->dest, padj->info);
+					printf(" -> arc de %d vers %d avec l'info. %s \n",
+					       psommet->label, padj->dest, colorToString(padj->info));
 					padj = padj->suivant;
 				} while (padj != NULL);
 			}
@@ -363,3 +375,6 @@ int lireFichier(char *nomf, GRAPHE *g) {
 	fclose(fp);
 	return 0;
 }
+
+
+

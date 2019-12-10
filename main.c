@@ -98,12 +98,12 @@ int main() {
 	addEdge(graph2, k2, j2, 0);
 
 	printf("Initial graph:\n");
-	// afficherGraphe(graph);
-	afficherGraphe(graph2);
+	afficherGraphe(graph);
+	// afficherGraphe(graph2);
 
 	// STEP 1
-	// populateStacks(graph, s4, s5);
-	populateStacks(graph2, s4, s5);
+	populateStacks(graph, s4, s5);
+	// populateStacks(graph2, s4, s5);
 
 	// STEP 2
 	printf("----------In step2\n");
@@ -126,8 +126,8 @@ int main() {
 	}
 	printf("\n");
 
-	// stack4ToStackD(graph, s4, sd, s5);
-	stack4ToStackD(graph2, s4, sd, s5);
+	stack4ToStackD(graph, s4, sd, s5);
+	// stack4ToStackD(graph2, s4, sd, s5);
 	printf("----------Out step2\n");
 	printf("Inside s4 : ");
 	for (int i = 0; i < s4->size; ++i)
@@ -149,8 +149,9 @@ int main() {
 	printf("\n");
 
 	printf("Graph after step2:\n");
-	// afficherGraphe(graph);
-	afficherGraphe(graph2);
+	afficherGraphe(graph);
+	printf("graph nbs : %d, nba : %d, maxS : %d\n", graph->nbS, graph->nbA, graph->maxS);
+	// afficherGraphe(graph2);
 
 	// STEP 3
 	assert(isStackEmpty(s4)); // deg(graph) >= 5
@@ -160,8 +161,8 @@ int main() {
 		// STEP 5
 		// TODO
 	} else {
-		// mergeVertices(graph, s5, sd);
 		mergeVertices(graph, s5, sd);
+		// mergeVertices(graph2, s5, sd);
 	}
 
 	return 0;
