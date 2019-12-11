@@ -292,3 +292,43 @@ void afficherGraphe(GRAPHE *g) {
 		} while(psommet != NULL);
 	}
 }
+
+void spliceList(SOMMET *v1, SOMMET *v2, SOMMET *vertex){
+	ELTADJ *pl1_act, *pl1_prec, *pl2_act, *pl2_prec, *L1 = v1->adj, *L2 = v2->adj;
+	size_t size_L1 = v1->adjSize, size_L2 = v2->adjSize;
+
+	//		------ Looking inside L1
+
+	ELTADJ *adj1 = L1;
+	pl1_prec = adj1;
+	pl1_act = adj1->suivant;
+	for (size_t i = 0; i < size_L1; i++) {
+		if(pl1_act->vertex == vertex){
+			break;
+		}
+		pl1_prec = pl1_act;
+		pl1_act = pl1_act->suivant;
+	}
+
+	//		------ Looking inside L2
+	ELTADJ *adj2 = L2;
+	pl2_prec = adj2;
+	pl2_act = adj2->suivant;
+	for (size_t i = 0; i < size_L2; i++) {
+		if(pl2_act->vertex == vertex){
+			break;
+		}
+		pl2_prec = pl2_act;
+		pl2_act = pl2_act->suivant;
+	}
+
+	// Merge
+	if (v1->adj == pl1_act )
+	{
+		v1->adj = pl1_act->suivant;
+	}
+	// Pay attention to vetex, for now he still points on pl_act->suivant
+	pl1_prec->suivant = pl2_act->suivant;
+	pl2_prec->suivant = pl1_act->suivant;
+
+}
