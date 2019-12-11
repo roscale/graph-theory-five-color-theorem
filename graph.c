@@ -27,6 +27,8 @@ SOMMET *ajouterSommet(GRAPHE *g, Position position) {
 		pointeur->adj = NULL;
 		pointeur->adjSize = 0;
 		pointeur->info = -1;
+		pointeur->mergedWith = NULL;
+
 		if (g->nbS == 0) {
 			g->premierSommet = pointeur;
 			g->dernierSommet = pointeur;
@@ -155,6 +157,7 @@ int supprimerSommet(GRAPHE *g, SOMMET *a) {
 		/* il faut aussi supprimer les arcs ayant le sommet a supprimer comme extremite */
 		psommet = g->premierSommet;
 		while (psommet != NULL) {
+			// This shouldn't print a warning when there is no neighbour
 			supprimerArc(g, psommet, a);
 			psommet = psommet->suivant;
 		}
@@ -293,7 +296,7 @@ void afficherGraphe(GRAPHE *g) {
 	}
 }
 
-void spliceList(SOMMET *v1, SOMMET *v2, SOMMET *vertex){
+void spliceLists(SOMMET *v1, SOMMET *v2, SOMMET *vertex) {
 	ELTADJ *pl1_act, *pl1_prec, *pl2_act, *pl2_prec, *L1 = v1->adj, *L2 = v2->adj;
 	size_t size_L1 = v1->adjSize, size_L2 = v2->adjSize;
 
@@ -315,7 +318,7 @@ void spliceList(SOMMET *v1, SOMMET *v2, SOMMET *vertex){
 	pl2_prec = adj2;
 	pl2_act = adj2->suivant;
 	for (size_t i = 0; i < size_L2; i++) {
-		if(pl2_act->vertex == vertex){
+		if (pl2_act->vertex == vertex) {
 			break;
 		}
 		pl2_prec = pl2_act;
@@ -323,12 +326,13 @@ void spliceList(SOMMET *v1, SOMMET *v2, SOMMET *vertex){
 	}
 
 	// Merge
-	if (v1->adj == pl1_act )
-	{
+	if (v1->adj == pl1_act) {
 		v1->adj = pl1_act->suivant;
 	}
 	// Pay attention to vetex, for now he still points on pl_act->suivant
 	pl1_prec->suivant = pl2_act->suivant;
 	pl2_prec->suivant = pl1_act->suivant;
 
+	// Minus 2 because we have deleted v twice from both lists
+	v1->adjSize = size_L1 + size_L2 - 2;
 }

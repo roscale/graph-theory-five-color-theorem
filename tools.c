@@ -66,9 +66,64 @@ void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 	}
 }
 
+// Inefficient but it works and I don't care.
+static bool areNeighbours(SOMMET *v1, SOMMET *v2) {
+	ELTADJ *adj = v1->adj;
+	for (size_t i = 0; i < v1->adjSize; i++) {
+		if (adj->vertex == v2) {
+			return true;
+		}
+		adj = adj->suivant;
+	}
+	return false;
+}
+
 void mergeVertices(GRAPHE *graph, Stack *s5, Stack *sd) {
 	assert(!isStackEmpty(s5));
+	if (graph->nbS == 0) {
+		// The graph is empty, go to step 5
+		return;
+	}
+
 	SOMMET *v = popStack(s5);
+
+	// TODO We shouldn't delete it here, the splicing will always fail
+	supprimerSommet(graph, v);
+	pushStack(sd, v);
+
+	////////
+	ELTADJ *adj = v->adj;
+	for (size_t i = 0; i < v->adjSize; i++) {
+		printf("Label: %d, degree: %d\n",
+		       adj->vertex->label, adj->vertex->degree);
+
+		adj = adj->suivant;
+	}
+	////////
+
+	SOMMET *v1 = v->adj->vertex;
+	SOMMET *v3 = v->adj->suivant->suivant->vertex;
+
+	// if v1 is NOT adjacent to v3
+	if (!areNeighbours(v1, v3)) {
+		spliceLists(v1, v3, v);
+		v1->mergedWith = v3;
+		pushStack(sd, v3);
+		supprimerSommet(graph, v1);
+
+		// TODO?
+		// It's possible that this might create faces bounded by two edges at the two points where the lists are spliced together; we delete one edge from any such faces.
+
+
+	} else {
+		// v2 and v4 are not adjacent
+		SOMMET *v2 = v->adj->suivant->vertex;
+		SOMMET *v4 = v->adj->suivant->suivant->suivant->vertex;
+
+		spliceLists(v4, v2, v);
+		v4->mergedWith = v2;
+		pushStack(sd, v4);
+	}
 }
 
 Color getColorFromArray(Color *colors){

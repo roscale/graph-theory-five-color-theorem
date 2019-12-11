@@ -28,6 +28,7 @@ struct sommet {
    struct sommet *suivant;
    struct eltadj *adj; // circular list
    size_t adjSize;
+   struct sommet *mergedWith;
 };
 
 struct eltadj {
@@ -71,5 +72,7 @@ void afficherGraphe(GRAPHE *);
 //int lireFichier(char *nomf, GRAPHE *);
 
 const char *colorToString(Color color);
+
+void spliceLists(SOMMET *v1, SOMMET *v2, SOMMET *vertex);
 
 #endif

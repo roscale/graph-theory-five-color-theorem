@@ -49,33 +49,46 @@ int main() {
 	GRAPHE *graph2 = malloc(sizeof(GRAPHE));
 	initialiserGraphe(graph2);
 
-	SOMMET *a2 = ajouterSommet(graph2, placeholder);
-	SOMMET *b2 = ajouterSommet(graph2, placeholder);
-	SOMMET *c2 = ajouterSommet(graph2, placeholder);
-	SOMMET *d2 = ajouterSommet(graph2, placeholder);
-	SOMMET *e2 = ajouterSommet(graph2, placeholder);
-	SOMMET *f2 = ajouterSommet(graph2, placeholder);
-	SOMMET *g2 = ajouterSommet(graph2, placeholder);
-	SOMMET *h2 = ajouterSommet(graph2, placeholder);
-	SOMMET *i2 = ajouterSommet(graph2, placeholder);
-	SOMMET *j2 = ajouterSommet(graph2, placeholder);
-	SOMMET *k2 = ajouterSommet(graph2, placeholder);
-	SOMMET *l2 = ajouterSommet(graph2, placeholder);
+	Position a2Pos = {-4, 0};
+	Position b2Pos = {0, 6};
+	Position c2Pos = {4, 0};
+	Position d2Pos = {0, 1};
+	Position e2Pos = {-1, 2};
+	Position f2Pos = {-1, 3};
+	Position g2Pos = {0, 4};
+	Position h2Pos = {1, 3};
+	Position i2Pos = {1, 2};
+	Position j2Pos = {0, 2};
+	Position k2Pos = {-0.5, 3};
+	Position l2Pos = {0.5, 3};
+
+	SOMMET *a2 = ajouterSommet(graph2, a2Pos);
+	SOMMET *b2 = ajouterSommet(graph2, b2Pos);
+	SOMMET *c2 = ajouterSommet(graph2, c2Pos);
+	SOMMET *d2 = ajouterSommet(graph2, d2Pos);
+	SOMMET *e2 = ajouterSommet(graph2, e2Pos);
+	SOMMET *f2 = ajouterSommet(graph2, f2Pos);
+	SOMMET *g2 = ajouterSommet(graph2, g2Pos);
+	SOMMET *h2 = ajouterSommet(graph2, h2Pos);
+	SOMMET *i2 = ajouterSommet(graph2, i2Pos);
+	SOMMET *j2 = ajouterSommet(graph2, j2Pos);
+	SOMMET *k2 = ajouterSommet(graph2, k2Pos);
+	SOMMET *l2 = ajouterSommet(graph2, l2Pos);
 
 	// Returns 0 on success
 	addEdge(graph2, a2, b2);
 	addEdge(graph2, a2, c2);
 	addEdge(graph2, a2, d2);
-	addEdge(graph2, a2, i2);
-	addEdge(graph2, a2, h2);
+	addEdge(graph2, a2, e2);
+	addEdge(graph2, a2, f2);
 
-	addEdge(graph2, b2, d2);
-	addEdge(graph2, b2, e2);
-	addEdge(graph2, b2, f2);
 	addEdge(graph2, b2, c2);
+	addEdge(graph2, b2, f2);
+	addEdge(graph2, b2, g2);
+	addEdge(graph2, b2, h2);
 
-	addEdge(graph2, c2, f2);
-	addEdge(graph2, c2, g2);
+	addEdge(graph2, c2, d2);
+	addEdge(graph2, c2, i2);
 	addEdge(graph2, c2, h2);
 
 	addEdge(graph2, i2, j2);
@@ -139,31 +152,40 @@ int main() {
 
 	printf("Initial graph:\n");
 	// afficherGraphe(graph);
-	// afficherGraphe(graph2);
-	afficherGraphe(graph3);
+	 afficherGraphe(graph2);
+//	afficherGraphe(graph3);
 
 	// STEP 1
 	// populateStacks(graph, s4, s5);
-	// populateStacks(graph2, s4, s5);
-	populateStacks(graph3, s4, s5);
+	 populateStacks(graph2, s4, s5);
+//	populateStacks(graph3, s4, s5);
 
 	// STEP 2
 
+	step2:
 
 	// stack4ToStackD(graph, s4, sd, s5);
-	// stack4ToStackD(graph2, s4, sd, s5);
-	stack4ToStackD(graph3, s4, sd, s5);
+	 stack4ToStackD(graph2, s4, sd, s5);
+//	stack4ToStackD(graph3, s4, sd, s5);
 
 	// STEP 3
 	assert(isStackEmpty(s4)); // deg(graph) >= 5
 
 	// The graph is empty
-	if (graph3->nbS == 0) {
+	if (graph2->nbS == 0) {
 		// STEP 5
 		
 		SOMMET *v;
 		while (!isStackEmpty(sd)) {
 			v = popStack(sd);
+
+			// Color merged vertex
+			if (v->mergedWith != NULL) {
+				v->info = v->mergedWith->info;
+				pushStack(sTrash, v);
+				continue;
+			}
+
 			Color c[5] = {0, 1, 2, 3, 4};
 			ELTADJ *padj = v->adj;
 			for (size_t i = 0; padj != NULL && i < v->adjSize; i++, padj = padj->suivant) {
@@ -186,11 +208,10 @@ int main() {
 		printf("\n");
 	} else {
 		// mergeVertices(graph, s5, sd);
-		// mergeVertices(graph2, s5, sd);
-		mergeVertices(graph3, s5, sd);
+		 mergeVertices(graph2, s5, sd);
+		 goto step2;
+//		mergeVertices(graph3, s5, sd);
 	}
-
-	
 
 	return 0;
 }
