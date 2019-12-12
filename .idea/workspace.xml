@@ -14,10 +14,9 @@
   <component name="ChangeListManager">
     <list default="true" id="6c33dda4-2f31-473d-8cde-86a471664311" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/graph.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/graph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testStack.c" beforeDir="false" afterPath="$PROJECT_DIR$/testStack.c" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -58,7 +57,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.five_color">
+  <component name="RunManager" selected="CMake Application.test_stack">
     <configuration name="five_color" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="five_color" TARGET_NAME="five_color" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="five_color" RUN_TARGET_NAME="five_color">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -91,7 +90,7 @@
       <workItem from="1575647007506" duration="8000" />
       <workItem from="1575898870070" duration="6478000" />
       <workItem from="1575908044360" duration="4228000" />
-      <workItem from="1576083533927" duration="12726000" />
+      <workItem from="1576083533927" duration="14611000" />
     </task>
     <servers />
   </component>
