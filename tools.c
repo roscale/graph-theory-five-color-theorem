@@ -126,6 +126,7 @@ void mergeVertices(GRAPHE *graph, Stack *s5, Stack *sd) {
 	}
 }
 
+
 Color getColorFromArray(Color *colors){
 	assert(colors != NULL);
 	for (int i = 0; i < 5; ++i)

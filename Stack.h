@@ -22,6 +22,8 @@ bool isVertexInStack(Stack *stack, SOMMET *vertex);
 
 bool isStackEmpty(Stack *stack);
 
+void removeElementFromStack(Stack *stack, SOMMET *vertex);
+
 SOMMET *findVertexWithLabelInsideStack(Stack *stack, int label);
 
 #endif //FIVE_COLOR_STACK_H

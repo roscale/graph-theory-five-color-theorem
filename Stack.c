@@ -71,6 +71,24 @@ bool isStackEmpty(Stack *stack) {
 	return stack->size == 0;
 }
 
+
+void removeElementFromStack(Stack *stack, SOMMET *vertex){
+	assert(stack != NULL && vertex != NULL);
+	bool vertex_found = false;
+
+	for (size_tiz i = 0; i < stack->size; ++i)
+	{
+		if (stack[i] == vertex && !vertex_found){
+			vertex_found = true;
+			--stack->size;
+		}
+
+		if (vertex_found){
+			stack[i] = stack[i+1];
+		}
+	}
+}
+
 SOMMET *findVertexWithLabelInsideStack(Stack *stack, int label) {
 	SOMMET *foundVertex = NULL, *v;
 	for (size_t i = 0; i < stack->size; ++i){
