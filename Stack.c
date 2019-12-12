@@ -76,15 +76,15 @@ void removeElementFromStack(Stack *stack, SOMMET *vertex){
 	assert(stack != NULL && vertex != NULL);
 	bool vertex_found = false;
 
-	for (size_tiz i = 0; i < stack->size; ++i)
+	for (size_t i = 0; i < stack->size; ++i)
 	{
-		if (stack[i] == vertex && !vertex_found){
+		if (stack->vertices[i] == vertex && !vertex_found){
 			vertex_found = true;
 			--stack->size;
 		}
 
 		if (vertex_found){
-			stack[i] = stack[i+1];
+			stack->vertices[i] = stack->vertices[i+1];
 		}
 	}
 }

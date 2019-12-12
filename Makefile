@@ -15,6 +15,7 @@ all: $(EXEC)
 graph_coloring: $(OBJECTS)
 	$(LD) -o graph_coloring $(OBJECTS) $(LDFLAGS)
 
+
 main.o: main.c graph.h Stack.h tools.h
 	$(CC) -c main.c -o main.o  $(CFLAGS)
 
@@ -28,7 +29,7 @@ tools.o: tools.c tools.h Stack.h graph.h
 	$(CC) -c tools.c -o tools.o  $(CFLAGS)
 
 testStack: testStack.c graph.c Stack.c
-	$(CC) $(LDFLAGS) -o testStack testStack.c graph.c Stack.c
+	$(CC) $(LDFLAGS) -o testStack testStack.c graph.c Stack.c -lm
 
 clean:
 	rm -f *.o graph_coloring testStack

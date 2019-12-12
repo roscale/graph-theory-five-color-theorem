@@ -40,7 +40,7 @@ int main() {
 	assert(popStack(stack) == d);
 	assert(popStack(stack) == b);
 	removeElementFromStack(stack, f);
-	assert(popStack(stack) == b);
+	assert(popStack(stack) == a);
 
 	assert(pushStack(stack, e) == true);
 	assert(popStack(stack) == e);
