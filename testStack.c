@@ -12,6 +12,7 @@ int main() {
 	SOMMET *c = (SOMMET *) 3;
 	SOMMET *d = (SOMMET *) 4;
 	SOMMET *e = (SOMMET *) 5;
+	SOMMET *f = (SOMMET *) 5;
 
 	Stack *stack = createStack(3);
 	assert(pushStack(stack, a) == true);
@@ -27,6 +28,19 @@ int main() {
 	assert(popStack(stack) == NULL);
 	assert(popStack(stack) == NULL);
 	assert(isStackEmpty(stack) == true);
+
+	//		------ test refomeElementFromStack
+	assert(pushStack(stack, a) == true);
+	assert(pushStack(stack, b) == true);
+	assert(pushStack(stack, c) == true);
+	assert(pushStack(stack, d) == true);
+	assert(pushStack(stack, e) == true);
+	removeElementFromStack(stack, c);
+	assert(popStack(stack) == e);
+	assert(popStack(stack) == d);
+	assert(popStack(stack) == b);
+	removeElementFromStack(stack, f);
+	assert(popStack(stack) == b);
 
 	assert(pushStack(stack, e) == true);
 	assert(popStack(stack) == e);
