@@ -16,7 +16,7 @@ bool vertexMatchesConditionsForS5(GRAPHE *graph, SOMMET *vertex);
 
 void populateStacks(GRAPHE *graph, Stack *s4, Stack *s5);
 
-void mergeVertices(GRAPHE *graph, Stack *s5, Stack *sd);
+void mergeVertices(GRAPHE *graph, Stack *s4, Stack *s5, Stack *sd);
 
 void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5);
 

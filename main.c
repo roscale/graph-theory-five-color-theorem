@@ -99,9 +99,11 @@ int main() {
 	addEdge(graph2, d2, j2);
 	addEdge(graph2, d2, e2);
 
-	addEdge(graph2, e2, j2);
+	// TODO doesn't work
+//	addEdge(graph2, e2, j2);
 	addEdge(graph2, e2, k2);
 	addEdge(graph2, e2, f2);
+	addEdge(graph2, e2, j2);
 
 	addEdge(graph2, f2, k2);
 	addEdge(graph2, f2, g2);
@@ -152,12 +154,12 @@ int main() {
 
 	printf("Initial graph:\n");
 	// afficherGraphe(graph);
-	 afficherGraphe(graph2);
+	 afficherGraphe(graph3);
 //	afficherGraphe(graph3);
 
 	// STEP 1
 	// populateStacks(graph, s4, s5);
-	 populateStacks(graph2, s4, s5);
+	 populateStacks(graph3, s4, s5);
 //	populateStacks(graph3, s4, s5);
 
 	// STEP 2
@@ -165,16 +167,30 @@ int main() {
 	step2:
 
 	// stack4ToStackD(graph, s4, sd, s5);
-	 stack4ToStackD(graph2, s4, sd, s5);
+	 stack4ToStackD(graph3, s4, sd, s5);
 //	stack4ToStackD(graph3, s4, sd, s5);
 
 	// STEP 3
 	assert(isStackEmpty(s4)); // deg(graph) >= 5
 
 	// The graph is empty
-	if (graph2->nbS == 0) {
+	if (graph3->nbS == 0) {
 		// STEP 5
-		
+
+//		SOMMET *root = NULL;
+//		while ((root = popStack(sd)) != NULL) {
+//			printf("Root: %d degree %d\n", root->label, root->degree);
+//
+//			ELTADJ *neigh = root->adj;
+//			for (size_t i = 0; i < root->adjSize; i++) {
+//				printf("\t neigh: %d\n", neigh->vertex->label);
+//				neigh = neigh->suivant;
+//			}
+//			printf("\n");
+//		}
+
+//		return 0;
+
 		SOMMET *v;
 		while (!isStackEmpty(sd)) {
 			v = popStack(sd);
@@ -188,7 +204,7 @@ int main() {
 
 			Color c[5] = {0, 1, 2, 3, 4};
 			ELTADJ *padj = v->adj;
-			for (size_t i = 0; padj != NULL && i < v->adjSize; i++, padj = padj->suivant) {
+			for (size_t i = 0; i < v->adjSize; i++, padj = padj->suivant) {
 				// printf("Dest : %d, info : %d\n",padj->dest, padj->info);
 				// printf("%d ", padj->vertex->info );
 				if(padj->vertex->info >= 0 && padj->vertex->info < 5){
@@ -203,12 +219,12 @@ int main() {
 		printf("----------- Affichage des couleurs des diff somment : \n");
 		while (!isStackEmpty(sTrash)){
 			SOMMET *v = popStack(sTrash);
-			printf("v(%d):%s ", v->label, colorToString(v->info) );
+			printf("v(%d):%s\n", v->label, colorToString(v->info) );
 		}
 		printf("\n");
 	} else {
 		// mergeVertices(graph, s5, sd);
-		 mergeVertices(graph2, s5, sd);
+		mergeVertices(graph3, s4, s5, sd);
 		 goto step2;
 //		mergeVertices(graph3, s5, sd);
 	}
