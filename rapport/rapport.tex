@@ -40,44 +40,44 @@
 \newcommand{\coms}[1]{\textcolor{MidnightBlue}{#1}}
 
 \DeclareFloatingEnvironment[
-  fileext=lob,
-  listname={List of Boxes},
-  name=FIG,
-  placement=htp,
+fileext=lob,
+listname={List of Boxes},
+name=FIG,
+placement=htp,
 ]{BOX}
 
 \lstset{
-    language=C, % Utilisation du langage C
-    commentstyle={\color{MidnightBlue}}, % Couleur des commentaires
-    frame=single, % Entoure le code d'un joli cadre
-    rulecolor=\color{black}, % Couleur de la ligne qui forme le cadre
-    stringstyle=\color{RawSienna}, % Couleur des chaines de caractères
-    numbers=left, % Ajoute une numérotation des lignes à gauche
-    numbersep=5pt, % Distance entre les numérots de lignes et le code
-    numberstyle=\tiny\color{mygray}, % Couleur des numéros de lignes
-    basicstyle=\tt\footnotesize,
-    tabsize=3, % Largeur des tabulations par défaut
-    keywordstyle=\tt\bf\footnotesize\color{Sepia}, % Style des mots-clés
-    extendedchars=true,
-    captionpos=b, % sets the caption-position to bottom
-    texcl=true, % Commentaires sur une ligne interprétés en Latex
-    showstringspaces=false, % Ne montre pas les espace dans les chaines de caractères
-    escapeinside={(>}{<)}, % Permet de mettre du latex entre des <( et )>.
-    inputencoding=utf8,
-    literate=
-  {á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
-  {Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
-  {à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
-  {À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
-  {ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
-  {Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
-  {â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
-  {Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
-  {œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
-  {ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
-  {ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
-  {€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
-  {»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
+	language=C, % Utilisation du langage C
+	commentstyle={\color{MidnightBlue}}, % Couleur des commentaires
+	frame=single, % Entoure le code d'un joli cadre
+	rulecolor=\color{black}, % Couleur de la ligne qui forme le cadre
+	stringstyle=\color{RawSienna}, % Couleur des chaines de caractères
+	numbers=left, % Ajoute une numérotation des lignes à gauche
+	numbersep=5pt, % Distance entre les numérots de lignes et le code
+	numberstyle=\tiny\color{mygray}, % Couleur des numéros de lignes
+	basicstyle=\tt\footnotesize,
+	tabsize=3, % Largeur des tabulations par défaut
+	keywordstyle=\tt\bf\footnotesize\color{Sepia}, % Style des mots-clés
+	extendedchars=true,
+	captionpos=b, % sets the caption-position to bottom
+	texcl=true, % Commentaires sur une ligne interprétés en Latex
+	showstringspaces=false, % Ne montre pas les espace dans les chaines de caractères
+	escapeinside={(>}{<)}, % Permet de mettre du latex entre des <( et )>.
+	inputencoding=utf8,
+	literate=
+	{á}{{\'a}}1 {é}{{\'e}}1 {í}{{\'i}}1 {ó}{{\'o}}1 {ú}{{\'u}}1
+	{Á}{{\'A}}1 {É}{{\'E}}1 {Í}{{\'I}}1 {Ó}{{\'O}}1 {Ú}{{\'U}}1
+	{à}{{\`a}}1 {è}{{\`e}}1 {ì}{{\`i}}1 {ò}{{\`o}}1 {ù}{{\`u}}1
+	{À}{{\`A}}1 {È}{{\`E}}1 {Ì}{{\`I}}1 {Ò}{{\`O}}1 {Ù}{{\`U}}1
+	{ä}{{\"a}}1 {ë}{{\"e}}1 {ï}{{\"i}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+	{Ä}{{\"A}}1 {Ë}{{\"E}}1 {Ï}{{\"I}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+	{â}{{\^a}}1 {ê}{{\^e}}1 {î}{{\^i}}1 {ô}{{\^o}}1 {û}{{\^u}}1
+	{Â}{{\^A}}1 {Ê}{{\^E}}1 {Î}{{\^I}}1 {Ô}{{\^O}}1 {Û}{{\^U}}1
+	{œ}{{\oe}}1 {Œ}{{\OE}}1 {æ}{{\ae}}1 {Æ}{{\AE}}1 {ß}{{\ss}}1
+	{ű}{{\H{u}}}1 {Ű}{{\H{U}}}1 {ő}{{\H{o}}}1 {Ő}{{\H{O}}}1
+	{ç}{{\c c}}1 {Ç}{{\c C}}1 {ø}{{\o}}1 {å}{{\r a}}1 {Å}{{\r A}}1
+	{€}{{\euro}}1 {£}{{\pounds}}1 {«}{{\guillemotleft}}1
+	{»}{{\guillemotright}}1 {ñ}{{\~n}}1 {Ñ}{{\~N}}1 {¿}{{?`}}1
 }
 \newcommand{\tablemat}{~}
 \newcommand{\intitule}{}
@@ -93,11 +93,20 @@
 \date{}
 
 \begin{document}
-\maketitle
-
-\newpage
-
-\section{Introduction de l'algorithme}
-
-\section{Fonctionnenemt}
+	\maketitle
+	
+	\newpage
+	
+	\section{Introduction de l'algorithme}
+	Le but de ce projet est d'implémenter "A linear algorithm for five-coloring a planar graph" de N. Chiba, T. Nishizeki and N. Saito et pour ce faire, on s'est fortement inspiré par la page Wikipédia\footnote{$https://en.wikipedia.org/wiki/Five_color_theorem?fbclid=IwAR2gWXQwMi2bhCh9HIW6gnY_vz_qEf5Cwk5j-c-YYZk23LTf-KPZSMsBNJY$} qui décrit cet algorithme, mais comme les explications donnés par ce site laissent place à quelques ambiguïtés, on s'est aussi inspiré d'autres sources dont vous trouverez les références dans la section "Références".
+	\par Le but de cet algorithme est donc de pouvoir colorier avec maximum 5 couleurs différents un graphe plane, tout en ayant une complexité temporaire constante.
+	\section{Implementation}
+	
+	\newpage
+	\section{Références}
+	\begin{itemize}
+		\item https://en.wikipedia.org/wiki/Five\_color\_theorem?fbclid=IwAR2gWXQwMi2bhCh9HIW6gnY\_vz\_qEf5Cwk5j-c-YYZk23LTf-KPZSMsBNJY
+		\item http://cgm.cs.mcgill.ca/~athens/cs507/Projects/2003/MatthewWahab/5color.html
+		\item http://mathonline.wikidot.com/5-colour-theorem-for-planar-graphs
+	\end{itemize}
 \end{document}
