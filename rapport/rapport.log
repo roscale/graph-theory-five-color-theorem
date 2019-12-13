@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.10.19)  12 DEC 2019 23:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.10.19)  13 DEC 2019 16:57
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -546,25 +546,21 @@ File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
 \Gin@req@height=\dimen129
 \Gin@req@width=\dimen130
 )
-(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.sty
-Package: subfigure 2002/03/15 v2.1.5 subfigure package
-\subfigtopskip=\skip55
-\subfigcapskip=\skip56
-\subfigcaptopadj=\dimen131
-\subfigbottomskip=\skip57
-\subfigcapmargin=\dimen132
-\subfiglabelskip=\skip58
-\c@subfigure=\count119
-\c@lofdepth=\count120
-\c@subtable=\count121
-\c@lotdepth=\count122
-
-****************************************
-* Local config file subfigure.cfg used *
-****************************************
-(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg)
-\subfig@top=\skip59
-\subfig@bottom=\skip60
+(/usr/share/texlive/texmf-dist/tex/latex/subfig/subfig.sty
+Package: subfig 2005/06/28 ver: 1.3 subfig package
+\c@KVtest=\count119
+\sf@farskip=\skip55
+\sf@captopadj=\dimen131
+\sf@capskip=\skip56
+\sf@nearskip=\skip57
+\c@subfigure=\count120
+\c@subfigure@save=\count121
+\c@lofdepth=\count122
+\c@subtable=\count123
+\c@subtable@save=\count124
+\c@lotdepth=\count125
+\sf@top=\skip58
+\sf@bottom=\skip59
 )
 (/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
 Package: alltt 1997/06/16 v2.0g defines alltt environment
@@ -590,19 +586,19 @@ Package color Info: Driver file: pdftex.def on input line 147.
 )
 (/usr/share/texlive/texmf-dist/tex/latex/clrscode3e/clrscode3e.sty
 Package: clrscode3e 
-\c@codelinenumber=\count123
-\c@indent=\count124
-\digitwidth=\skip61
+\c@codelinenumber=\count126
+\c@indent=\count127
+\digitwidth=\skip60
 \savecode=\box32
-\codeboxwidth=\skip62
-\c@thisindent=\count125
+\codeboxwidth=\skip61
+\c@thisindent=\count128
 )
 (/usr/share/texlive/texmf-dist/tex/latex/varwidth/varwidth.sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box33
-\sift@deathcycles=\count126
-\@vwid@loff=\dimen133
-\@vwid@roff=\dimen134
+\sift@deathcycles=\count129
+\@vwid@loff=\dimen132
+\@vwid@roff=\dimen133
 )
 (/usr/share/texlive/texmf-dist/tex/latex/caption/newfloat.sty
 Package: newfloat 2015/09/17 v1.1-109 Defining new floating environments (AR)
@@ -618,10 +614,10 @@ Package xcolor Info: Driver file: pdftex.def on input line 225.
 (/usr/share/texlive/texmf-dist/tex/latex/colortbl/colortbl.sty
 Package: colortbl 2012/02/13 v1.0a Color table columns (DPC)
 \everycr=\toks27
-\minrowclearance=\skip63
+\minrowclearance=\skip62
 )
 LaTeX Info: Redefining \color on input line 709.
-\rownum=\count127
+\rownum=\count130
 Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
 Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1352.
 Package xcolor Info: Model `RGB' extended on input line 1364.
@@ -641,8 +637,8 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
 \pgfutil@everybye=\toks28
-\pgfutil@tempdima=\dimen135
-\pgfutil@tempdimb=\dimen136
+\pgfutil@tempdima=\dimen134
+\pgfutil@tempdimb=\dimen135
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.t
 ex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
@@ -668,20 +664,20 @@ Package: pgfsys 2014/07/09 v3.0.1a (rcs-revision 1.48)
 ex
 \pgfkeys@tmptoks=\toks31
 ))
-\pgf@x=\dimen137
-\pgf@y=\dimen138
-\pgf@xa=\dimen139
-\pgf@ya=\dimen140
-\pgf@xb=\dimen141
-\pgf@yb=\dimen142
-\pgf@xc=\dimen143
-\pgf@yc=\dimen144
+\pgf@x=\dimen136
+\pgf@y=\dimen137
+\pgf@xa=\dimen138
+\pgf@ya=\dimen139
+\pgf@xb=\dimen140
+\pgf@yb=\dimen141
+\pgf@xc=\dimen142
+\pgf@yc=\dimen143
 \w@pgf@writea=\write3
 \r@pgf@reada=\read1
-\c@pgf@counta=\count128
-\c@pgf@countb=\count129
-\c@pgf@countc=\count130
-\c@pgf@countd=\count131
+\c@pgf@counta=\count131
+\c@pgf@countb=\count132
+\c@pgf@countc=\count133
+\c@pgf@countd=\count134
 \t@pgf@toka=\toks32
 \t@pgf@tokb=\toks33
 \t@pgf@tokc=\toks34
@@ -700,8 +696,8 @@ File: pgfsys-common-pdf.def 2013/10/10  (rcs-revision 1.13)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.
 tex
 File: pgfsyssoftpath.code.tex 2013/09/09  (rcs-revision 1.9)
-\pgfsyssoftpath@smallbuffer@items=\count132
-\pgfsyssoftpath@bigbuffer@items=\count133
+\pgfsyssoftpath@smallbuffer@items=\count135
+\pgfsyssoftpath@bigbuffer@items=\count136
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.
 tex
@@ -714,8 +710,8 @@ Package: pgfcore 2010/04/11 v3.0.1a (rcs-revision 1.7)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen145
-\pgfmath@count=\count134
+\pgfmath@dimen=\dimen144
+\pgfmath@count=\count137
 \pgfmath@box=\box35
 \pgfmath@toks=\toks35
 \pgfmath@stack@operand=\toks36
@@ -739,37 +735,37 @@ tex)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerari
 thmetics.code.tex)))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
-\c@pgfmathroundto@lastzeros=\count135
+\c@pgfmathroundto@lastzeros=\count138
 ))
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.te
 x
 File: pgfcorepoints.code.tex 2013/10/07  (rcs-revision 1.27)
-\pgf@picminx=\dimen146
-\pgf@picmaxx=\dimen147
-\pgf@picminy=\dimen148
-\pgf@picmaxy=\dimen149
-\pgf@pathminx=\dimen150
-\pgf@pathmaxx=\dimen151
-\pgf@pathminy=\dimen152
-\pgf@pathmaxy=\dimen153
-\pgf@xx=\dimen154
-\pgf@xy=\dimen155
-\pgf@yx=\dimen156
-\pgf@yy=\dimen157
-\pgf@zx=\dimen158
-\pgf@zy=\dimen159
+\pgf@picminx=\dimen145
+\pgf@picmaxx=\dimen146
+\pgf@picminy=\dimen147
+\pgf@picmaxy=\dimen148
+\pgf@pathminx=\dimen149
+\pgf@pathmaxx=\dimen150
+\pgf@pathminy=\dimen151
+\pgf@pathmaxy=\dimen152
+\pgf@xx=\dimen153
+\pgf@xy=\dimen154
+\pgf@yx=\dimen155
+\pgf@yy=\dimen156
+\pgf@zx=\dimen157
+\pgf@zy=\dimen158
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.
 code.tex
 File: pgfcorepathconstruct.code.tex 2013/10/07  (rcs-revision 1.29)
-\pgf@path@lastx=\dimen160
-\pgf@path@lasty=\dimen161
+\pgf@path@lastx=\dimen159
+\pgf@path@lasty=\dimen160
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code
 .tex
 File: pgfcorepathusage.code.tex 2014/11/02  (rcs-revision 1.24)
-\pgf@shorten@end@additional=\dimen162
-\pgf@shorten@start@additional=\dimen163
+\pgf@shorten@end@additional=\dimen161
+\pgf@shorten@start@additional=\dimen162
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.te
 x
@@ -777,19 +773,19 @@ File: pgfcorescopes.code.tex 2015/05/08  (rcs-revision 1.46)
 \pgfpic=\box36
 \pgf@hbox=\box37
 \pgf@layerbox@main=\box38
-\pgf@picture@serial@count=\count136
+\pgf@picture@serial@count=\count139
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.c
 ode.tex
 File: pgfcoregraphicstate.code.tex 2014/11/02  (rcs-revision 1.12)
-\pgflinewidth=\dimen164
+\pgflinewidth=\dimen163
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformation
 s.code.tex
 File: pgfcoretransformations.code.tex 2015/08/07  (rcs-revision 1.20)
-\pgf@pt@x=\dimen165
-\pgf@pt@y=\dimen166
-\pgf@pt@temp=\dimen167
+\pgf@pt@x=\dimen164
+\pgf@pt@y=\dimen165
+\pgf@pt@temp=\dimen166
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2008/10/09  (rcs-revision 1.3)
@@ -805,12 +801,12 @@ File: pgfcorepathprocessing.code.tex 2013/09/09  (rcs-revision 1.9)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.te
 x
 File: pgfcorearrows.code.tex 2015/05/14  (rcs-revision 1.43)
-\pgfarrowsep=\dimen168
+\pgfarrowsep=\dimen167
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2013/07/15  (rcs-revision 1.15)
-\pgf@max=\dimen169
-\pgf@sys@shading@range@num=\count137
+\pgf@max=\dimen168
+\pgf@sys@shading@range@num=\count140
 )
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2013/07/15  (rcs-revision 1.18)
@@ -841,8 +837,8 @@ File: pgfmoduleplot.code.tex 2015/08/03  (rcs-revision 1.13)
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65
 .sty
 Package: pgfcomp-version-0-65 2007/07/03 v3.0.1a (rcs-revision 1.7)
-\pgf@nodesepstart=\dimen170
-\pgf@nodesepend=\dimen171
+\pgf@nodesepstart=\dimen169
+\pgf@nodesepend=\dimen170
 )
 (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18
 .sty
@@ -856,8 +852,8 @@ Package: pgfcomp-version-1-18 2007/07/23 v3.0.1a (rcs-revision 1.1)
 Package: pgffor 2013/12/13 v3.0.1a (rcs-revision 1.25)
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen172
-\pgffor@skip=\dimen173
+\pgffor@iter=\dimen171
+\pgffor@skip=\dimen172
 \pgffor@stack=\toks38
 \pgffor@toks=\toks39
 ))
@@ -867,31 +863,31 @@ Package: tikz 2015/08/07 v3.0.1a (rcs-revision 1.151)
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers
 .code.tex
 File: pgflibraryplothandlers.code.tex 2013/08/31 v3.0.1a (rcs-revision 1.20)
-\pgf@plot@mark@count=\count138
-\pgfplotmarksize=\dimen174
+\pgf@plot@mark@count=\count141
+\pgfplotmarksize=\dimen173
 )
-\tikz@lastx=\dimen175
-\tikz@lasty=\dimen176
-\tikz@lastxsaved=\dimen177
-\tikz@lastysaved=\dimen178
-\tikzleveldistance=\dimen179
-\tikzsiblingdistance=\dimen180
+\tikz@lastx=\dimen174
+\tikz@lasty=\dimen175
+\tikz@lastxsaved=\dimen176
+\tikz@lastysaved=\dimen177
+\tikzleveldistance=\dimen178
+\tikzsiblingdistance=\dimen179
 \tikz@figbox=\box41
 \tikz@figbox@bg=\box42
 \tikz@tempbox=\box43
 \tikz@tempbox@bg=\box44
-\tikztreelevel=\count139
-\tikznumberofchildren=\count140
-\tikznumberofcurrentchild=\count141
-\tikz@fig@count=\count142
+\tikztreelevel=\count142
+\tikznumberofchildren=\count143
+\tikznumberofcurrentchild=\count144
+\tikz@fig@count=\count145
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2013/09/17  (rcs-revision 1.8)
-\pgfmatrixcurrentrow=\count143
-\pgfmatrixcurrentcolumn=\count144
-\pgf@matrix@numberofcolumns=\count145
+\pgfmatrixcurrentrow=\count146
+\pgfmatrixcurrentcolumn=\count147
+\pgf@matrix@numberofcolumns=\count148
 )
-\tikz@expandcount=\count146
+\tikz@expandcount=\count149
 
 (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tik
 zlibrarytopaths.code.tex
@@ -900,33 +896,33 @@ File: tikzlibrarytopaths.code.tex 2008/06/17 v3.0.1a (rcs-revision 1.2)
 (/usr/share/texlive/texmf-dist/tex/latex/tikz-qtree/pgftree.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tikz-qtree/pgfsubpic.sty
 (/usr/share/texlive/texmf-dist/tex/latex/tikz-qtree/pgfsubpic.tex
-\pgf@subpicminx=\dimen181
-\pgf@subpicminy=\dimen182
-\pgf@subpicmaxx=\dimen183
-\pgf@subpicmaxy=\dimen184
+\pgf@subpicminx=\dimen180
+\pgf@subpicminy=\dimen181
+\pgf@subpicmaxx=\dimen182
+\pgf@subpicmaxy=\dimen183
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/tikz-qtree/pgftree.tex
-\levelsep=\dimen185
-\subtreesep=\dimen186
-\smuggle@levelsep=\dimen187
-\smuggle@subtreesep=\dimen188
-\this@levelsep=\dimen189
-\this@subtreesep=\dimen190
-\pgftree@childx=\dimen191
-\pgftree@savechildx=\dimen192
-\pgftree@childy=\dimen193
-\pgftree@savechildy=\dimen194
-\pgftree@childi=\count147
-\pgftree@savechildi=\count148
-\pgftree@level=\count149
-\pgftree@depth=\dimen195
+\levelsep=\dimen184
+\subtreesep=\dimen185
+\smuggle@levelsep=\dimen186
+\smuggle@subtreesep=\dimen187
+\this@levelsep=\dimen188
+\this@subtreesep=\dimen189
+\pgftree@childx=\dimen190
+\pgftree@savechildx=\dimen191
+\pgftree@childy=\dimen192
+\pgftree@savechildy=\dimen193
+\pgftree@childi=\count150
+\pgftree@savechildi=\count151
+\pgftree@level=\count152
+\pgftree@depth=\dimen194
 \pgf@subpic@hbox@children=\box45
-\pgf@subpic@minx@children=\dimen196
-\pgf@subpic@miny@children=\dimen197
-\pgf@subpic@maxx@children=\dimen198
-\pgf@subpic@maxy@children=\dimen199
-\pgftree@lastchildx=\dimen256
-\pgftree@lastchildy=\dimen257
+\pgf@subpic@minx@children=\dimen195
+\pgf@subpic@miny@children=\dimen196
+\pgf@subpic@maxx@children=\dimen197
+\pgf@subpic@maxy@children=\dimen198
+\pgftree@lastchildx=\dimen199
+\pgftree@lastchildy=\dimen256
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/tikz-qtree/tikz-qtree.tex
 \@result=\toks40
@@ -943,45 +939,45 @@ catcodes, docmode, (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrecat.tex
  Xy-pic is free software: see the User's Guide for details.
 
 Loading kernel: messages; fonts; allocations: state,
-\X@c=\dimen258
-\Y@c=\dimen259
-\U@c=\dimen260
-\D@c=\dimen261
-\L@c=\dimen262
-\R@c=\dimen263
+\X@c=\dimen257
+\Y@c=\dimen258
+\U@c=\dimen259
+\D@c=\dimen260
+\L@c=\dimen261
+\R@c=\dimen262
 \Edge@c=\toks43
-\X@p=\dimen264
-\Y@p=\dimen265
-\U@p=\dimen266
-\D@p=\dimen267
-\L@p=\dimen268
-\R@p=\dimen269
+\X@p=\dimen263
+\Y@p=\dimen264
+\U@p=\dimen265
+\D@p=\dimen266
+\L@p=\dimen267
+\R@p=\dimen268
 \Edge@p=\toks44
-\X@origin=\dimen270
-\Y@origin=\dimen271
-\X@xbase=\dimen272
-\Y@xbase=\dimen273
-\X@ybase=\dimen274
-\Y@ybase=\dimen275
-\X@min=\dimen276
-\Y@min=\dimen277
-\X@max=\dimen278
-\Y@max=\dimen279
+\X@origin=\dimen269
+\Y@origin=\dimen270
+\X@xbase=\dimen271
+\Y@xbase=\dimen272
+\X@ybase=\dimen273
+\Y@ybase=\dimen274
+\X@min=\dimen275
+\Y@min=\dimen276
+\X@max=\dimen277
+\Y@max=\dimen278
 \lastobjectbox@=\box46
 \zerodotbox@=\box47
-\almostz@=\dimen280
+\almostz@=\dimen279
  direction,
-\d@X=\dimen281
-\d@Y=\dimen282
-\K@=\count150
-\KK@=\count151
-\Direction=\count152
-\K@dXdY=\dimen283
-\K@dYdX=\dimen284
+\d@X=\dimen280
+\d@Y=\dimen281
+\K@=\count153
+\KK@=\count154
+\Direction=\count155
+\K@dXdY=\dimen282
+\K@dYdX=\dimen283
 \xyread@=\read2
 \xywrite@=\write4
-\csp@=\count153
-\quotPTK@=\dimen285
+\csp@=\count156
+\quotPTK@=\dimen284
 
 utility macros; pictures: \xy, positions,
 \swaptoks@@=\toks45
@@ -1000,15 +996,15 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
  Xy-pic option: All features v.3.8
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xycurve.tex
  Xy-pic option: Curve and Spline extension v.3.12 curve,
-\crv@cnt@=\count154
+\crv@cnt@=\count157
 \crvpts@=\toks47
 \splinebox@=\box49
-\splineval@=\dimen286
-\splinedepth@=\dimen287
-\splinetol@=\dimen288
-\splinelength@=\dimen289
+\splineval@=\dimen285
+\splinedepth@=\dimen286
+\splinetol@=\dimen287
+\splinelength@=\dimen288
  circles,
-\L@=\dimen290
+\L@=\dimen289
  loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyframe.tex
  Xy-pic option: Frame and Bracket extension v.3.14 loaded)
@@ -1018,7 +1014,7 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
  Xy-pic option: More Tips extension v.3.11 loaded) loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyline.tex
  Xy-pic option: Line styles extension v.3.10
-\xylinethick@=\dimen291
+\xylinethick@=\dimen290
  loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrotate.tex
  Xy-pic option: Rotate and Scale extension v.3.8 loaded)
@@ -1026,13 +1022,13 @@ Package: xy 2013/10/06 Xy-pic version 3.8.9
  Xy-pic option: Colour extension v.3.11 loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xymatrix.tex
  Xy-pic option: Matrix feature v.3.14
-\Row=\count155
-\Col=\count156
+\Row=\count158
+\Col=\count159
 \queue@=\toks48
 \queue@@=\toks49
-\qcount@=\count157
-\qcount@@=\count158
-\matrixsize@=\count159
+\qcount@=\count160
+\qcount@@=\count161
+\matrixsize@=\count162
  loaded)
 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyarrow.tex
  Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded)
@@ -1063,50 +1059,50 @@ Package tocbibind Note: Using section or other style headings.
 ) (/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has section divisions on input line 51.
-\cftparskip=\skip64
-\cftbeforetoctitleskip=\skip65
-\cftaftertoctitleskip=\skip66
-\cftbeforepartskip=\skip67
-\cftpartnumwidth=\skip68
-\cftpartindent=\skip69
-\cftbeforesecskip=\skip70
-\cftsecindent=\skip71
-\cftsecnumwidth=\skip72
-\cftbeforesubsecskip=\skip73
-\cftsubsecindent=\skip74
-\cftsubsecnumwidth=\skip75
-\cftbeforesubsubsecskip=\skip76
-\cftsubsubsecindent=\skip77
-\cftsubsubsecnumwidth=\skip78
-\cftbeforeparaskip=\skip79
-\cftparaindent=\skip80
-\cftparanumwidth=\skip81
-\cftbeforesubparaskip=\skip82
-\cftsubparaindent=\skip83
-\cftsubparanumwidth=\skip84
-\cftbeforeloftitleskip=\skip85
-\cftafterloftitleskip=\skip86
-\cftbeforefigskip=\skip87
-\cftfigindent=\skip88
-\cftfignumwidth=\skip89
-\cftbeforelottitleskip=\skip90
-\cftafterlottitleskip=\skip91
-\cftbeforetabskip=\skip92
-\cfttabindent=\skip93
-\cfttabnumwidth=\skip94
-\cftbeforesubfigskip=\skip95
-\cftsubfigindent=\skip96
-\cftsubfignumwidth=\skip97
-\cftbeforesubtabskip=\skip98
-\cftsubtabindent=\skip99
-\cftsubtabnumwidth=\skip100
+\cftparskip=\skip63
+\cftbeforetoctitleskip=\skip64
+\cftaftertoctitleskip=\skip65
+\cftbeforepartskip=\skip66
+\cftpartnumwidth=\skip67
+\cftpartindent=\skip68
+\cftbeforesecskip=\skip69
+\cftsecindent=\skip70
+\cftsecnumwidth=\skip71
+\cftbeforesubsecskip=\skip72
+\cftsubsecindent=\skip73
+\cftsubsecnumwidth=\skip74
+\cftbeforesubsubsecskip=\skip75
+\cftsubsubsecindent=\skip76
+\cftsubsubsecnumwidth=\skip77
+\cftbeforeparaskip=\skip78
+\cftparaindent=\skip79
+\cftparanumwidth=\skip80
+\cftbeforesubparaskip=\skip81
+\cftsubparaindent=\skip82
+\cftsubparanumwidth=\skip83
+\cftbeforeloftitleskip=\skip84
+\cftafterloftitleskip=\skip85
+\cftbeforefigskip=\skip86
+\cftfigindent=\skip87
+\cftfignumwidth=\skip88
+\cftbeforelottitleskip=\skip89
+\cftafterlottitleskip=\skip90
+\cftbeforetabskip=\skip91
+\cfttabindent=\skip92
+\cfttabnumwidth=\skip93
+\cftbeforesubfigskip=\skip94
+\cftsubfigindent=\skip95
+\cftsubfignumwidth=\skip96
+\cftbeforesubtabskip=\skip97
+\cftsubtabindent=\skip98
+\cftsubtabnumwidth=\skip99
 )
 Package newfloat Info: New float `BOX' with options ` fileext=lob, listname={Li
 st of Boxes}, name=FIG, placement=htp, ' on input line 47.
-\c@BOX=\count160
-\newfloat@ftype=\count161
+\c@BOX=\count163
+\newfloat@ftype=\count164
 Package newfloat Info: float type `BOX'=8 on input line 47.
-\c@lobdepth=\count162
+\c@lobdepth=\count165
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2015/06/04 1.6 listings language file
@@ -1137,23 +1133,23 @@ Package french.ldf Info: Setting StandardEnumerateEnv=true for
 (french.ldf)             compatibility with enumitem package,
 (french.ldf)             reported on input line 95.
 LaTeX Info: Redefining \up on input line 95.
-\c@lstlisting=\count163
+\c@lstlisting=\count166
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfigure package is loaded.
+Package caption Info: subfig package v1.3 is loaded.
 Package caption Info: End \AtBeginDocument code.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count164
-\scratchdimen=\dimen292
+\scratchcounter=\count167
+\scratchdimen=\dimen291
 \scratchbox=\box50
-\nofMPsegments=\count165
-\nofMParguments=\count166
+\nofMPsegments=\count168
+\nofMParguments=\count169
 \everyMPshowfont=\toks50
-\MPscratchCnt=\count167
-\MPscratchDim=\dimen293
-\MPnumerator=\count168
-\makeMPintoPDFobject=\count169
+\MPscratchCnt=\count170
+\MPscratchDim=\dimen292
+\MPnumerator=\count171
+\makeMPintoPDFobject=\count172
 \everyMPtoPDFconversion=\toks51
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -1232,34 +1228,71 @@ n/9 5\OML/cmm/m/it/9 j \OMS/cmsy/m/n/9 ^^@
  []
 
 [2]
-Overfull \hbox (120.17659pt too wide) in paragraph at lines 108--109
+<graphe1.png, id=23, 447.6725pt x 383.4325pt>
+File: graphe1.png Graphic file (type png)
+<use graphe1.png>
+Package pdftex.def Info: graphe1.png  used on input line 114.
+(pdftex.def)             Requested size: 142.26378pt x 121.85255pt.
+<graphe1_c.png, id=25, 448.67625pt x 389.455pt>
+File: graphe1_c.png Graphic file (type png)
+<use graphe1_c.png>
+Package pdftex.def Info: graphe1_c.png  used on input line 116.
+(pdftex.def)             Requested size: 142.26378pt x 123.48122pt.
+<graphe2.png, id=26, 799.98875pt x 674.52pt>
+File: graphe2.png Graphic file (type png)
+<use graphe2.png>
+Package pdftex.def Info: graphe2.png  used on input line 127.
+(pdftex.def)             Requested size: 142.26378pt x 119.94684pt.
+<graphe2_c.png, id=27, 801.99625pt x 680.5425pt>
+File: graphe2_c.png Graphic file (type png)
+<use graphe2_c.png>
+Package pdftex.def Info: graphe2_c.png  used on input line 129.
+(pdftex.def)             Requested size: 142.26378pt x 120.71666pt.
+ [3 <./graphe1.png> <./graphe1_c.png> <./graphe2.png> <./graphe2_c.png>]
+<graphe3.png, id=39, 496.85625pt x 501.875pt>
+File: graphe3.png Graphic file (type png)
+<use graphe3.png>
+Package pdftex.def Info: graphe3.png  used on input line 141.
+(pdftex.def)             Requested size: 142.26378pt x 143.7021pt.
+<graphe3_c.png, id=40, 503.8825pt x 499.8675pt>
+File: graphe3_c.png Graphic file (type png)
+<use graphe3_c.png>
+Package pdftex.def Info: graphe3_c.png  used on input line 143.
+(pdftex.def)             Requested size: 142.26378pt x 141.12892pt.
+
+[4 <./graphe3.png> <./graphe3_c.png>]
+Overfull \hbox (120.17659pt too wide) in paragraph at lines 152--153
 []\T1/cmr/m/n/10.95 https ://en.wikipedia.org/wiki/Five_color_theorem ?fbclid=I
 wAR2gWXQwMi2bhCh9HIW6gnY_vz_qEf5Cwk5j-
  []
 
-[3] (./rapport.aux) ) 
+[5] (./rapport.aux) ) 
 Here is how much of TeX's memory you used:
- 20515 strings out of 492982
- 358628 string characters out of 6134895
- 475228 words of memory out of 5000000
- 23616 multiletter control sequences out of 15000+600000
- 19520 words of font info for 64 fonts, out of 8000000 for 9000
+ 20555 strings out of 492982
+ 359586 string characters out of 6134895
+ 479364 words of memory out of 5000000
+ 23650 multiletter control sequences out of 15000+600000
+ 20196 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 62i,7n,56p,3218b,423s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 62i,11n,56p,3218b,585s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-t1.enc
-}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/t
-exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf/fonts/type
-1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
-cc1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm0800.pfb></usr/sha
-re/texmf/fonts/type1/public/cm-super/sfrm0900.pfb></usr/share/texmf/fonts/type1
-/public/cm-super/sfrm1095.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfr
-m1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on rapport.pdf (3 pages, 119199 bytes).
+}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fon
+ts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/typ
+e1/public/amsfonts/cm/cmsy9.pfb></usr/share/texmf/fonts/type1/public/cm-super/s
+fbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfcc1095.pfb></usr/sh
+are/texmf/fonts/type1/public/cm-super/sfcc1200.pfb></usr/share/texmf/fonts/type
+1/public/cm-super/sfrm0800.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
+rm0900.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1095.pfb></usr/sha
+re/texmf/fonts/type1/public/cm-super/sfrm1200.pfb></usr/share/texmf/fonts/type1
+/public/cm-super/sfrm1728.pfb>
+Output written on rapport.pdf (5 pages, 280886 bytes).
 PDF statistics:
- 62 PDF objects out of 1000 (max. 8388607)
- 45 compressed objects within 1 object stream
+ 97 PDF objects out of 1000 (max. 8388607)
+ 62 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 13 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 43 words of extra memory for PDF output out of 10000 (max. 10000000)
 
