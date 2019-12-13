@@ -4,15 +4,14 @@
 #include <stdbool.h>
 
 int main() {
-	// DO NOT dereference these pointers
+	// DO NOT dereference these pointers, they contain invalid addresses
 	// They just simulate some vertices
-	// I was too lazy to properly instantiate them but it doesn't matter
 	SOMMET *a = (SOMMET *) 1;
 	SOMMET *b = (SOMMET *) 2;
 	SOMMET *c = (SOMMET *) 3;
 	SOMMET *d = (SOMMET *) 4;
 	SOMMET *e = (SOMMET *) 5;
-	SOMMET *f = (SOMMET *) 5;
+	SOMMET *f = (SOMMET *) 6;
 
 	Stack *stack = createStack(3);
 	assert(pushStack(stack, a) == true);

@@ -6,8 +6,6 @@
 #include <assert.h>
 #include <stddef.h>
 
-#define MAX 10000
-
 typedef enum Color_t {
    RED,
    GREEN,
@@ -27,7 +25,7 @@ struct sommet {
    Position position;
    struct sommet *suivant;
    struct eltadj *adj; // circular list
-   size_t adjSize;
+   size_t adjSize; // The size of the adjacency list
    struct sommet *mergedWith;
 };
 
@@ -59,20 +57,14 @@ int ajouterArc(GRAPHE *g, SOMMET *a, SOMMET *b);
 
 int supprimerSommet(GRAPHE *g, SOMMET *a);
 
-int supprimerArc(GRAPHE *g, SOMMET *a, SOMMET *b);
+int supprimerArc(SOMMET *a, SOMMET *b);
 
 bool addEdge(GRAPHE *g, SOMMET *a, SOMMET *b);
 
 void supprimerGraphe(GRAPHE *);
 
-bool removeEdge(GRAPHE *g, SOMMET *a, SOMMET *b);
-
 void afficherGraphe(GRAPHE *);
 
-//int lireFichier(char *nomf, GRAPHE *);
-
 const char *colorToString(Color color);
-
-void spliceLists(SOMMET *v1, SOMMET *v2, SOMMET *vertex);
 
 #endif

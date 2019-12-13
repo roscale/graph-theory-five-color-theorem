@@ -31,7 +31,7 @@ bool pushStack(Stack *stack, SOMMET *vertex) {
 	if (stack->size >= stack->capacity) {
 		// Resize array
 		SOMMET **new_array = realloc(stack->vertices, 2 * stack->capacity *
-			  sizeof(SOMMET*));
+		                                              sizeof(SOMMET *));
 		if (new_array != NULL) {
 			stack->vertices = new_array;
 			stack->capacity *= 2;
@@ -43,13 +43,11 @@ bool pushStack(Stack *stack, SOMMET *vertex) {
 	return true;
 }
 
-bool isVertexInStack(Stack *stack, SOMMET *vertex){
+bool isVertexInStack(Stack *stack, SOMMET *vertex) {
 	assert(stack != NULL && vertex != NULL);
-	SOMMET **v =  stack->vertices;
-	for (unsigned i = 0; v[i] != NULL && i < stack->size; ++i)
-	{
-		if (v[i]->label == vertex->label)
-		{
+	SOMMET **v = stack->vertices;
+	for (unsigned i = 0; v[i] != NULL && i < stack->size; ++i) {
+		if (v[i]->label == vertex->label) {
 			return true;
 		}
 	}
@@ -72,33 +70,18 @@ bool isStackEmpty(Stack *stack) {
 }
 
 
-void removeElementFromStack(Stack *stack, SOMMET *vertex){
+void removeElementFromStack(Stack *stack, SOMMET *vertex) {
 	assert(stack != NULL && vertex != NULL);
 	bool vertex_found = false;
 
-	for (size_t i = 0; i < stack->size; ++i)
-	{
-		if (stack->vertices[i] == vertex && !vertex_found){
+	for (size_t i = 0; i < stack->size; ++i) {
+		if (stack->vertices[i] == vertex && !vertex_found) {
 			vertex_found = true;
 			--stack->size;
 		}
 
-		if (vertex_found){
-			stack->vertices[i] = stack->vertices[i+1];
+		if (vertex_found) {
+			stack->vertices[i] = stack->vertices[i + 1];
 		}
 	}
-}
-
-SOMMET *findVertexWithLabelInsideStack(Stack *stack, int label) {
-	SOMMET *foundVertex = NULL, *v;
-	for (size_t i = 0; i < stack->size; ++i){
-		v = stack->vertices[i];
-		if (v->label == label) {
-			foundVertex = v;
-			break;
-		}
-	}
-	// assert(foundVertex != NULL);
-	// printf("Attention foundVertex == NULL\n");
-	return foundVertex;
 }

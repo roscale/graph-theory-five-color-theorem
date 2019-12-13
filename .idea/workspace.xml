@@ -14,7 +14,14 @@
   <component name="ChangeListManager">
     <list default="true" id="6c33dda4-2f31-473d-8cde-86a471664311" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stack.c" beforeDir="false" afterPath="$PROJECT_DIR$/Stack.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Stack.h" beforeDir="false" afterPath="$PROJECT_DIR$/Stack.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/graph.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/graph.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testStack.c" beforeDir="false" afterPath="$PROJECT_DIR$/testStack.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools.h" beforeDir="false" afterPath="$PROJECT_DIR$/tools.h" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +95,8 @@
       <workItem from="1575647007506" duration="8000" />
       <workItem from="1575898870070" duration="6478000" />
       <workItem from="1575908044360" duration="4228000" />
-      <workItem from="1576083533927" duration="31837000" />
+      <workItem from="1576083533927" duration="34005000" />
+      <workItem from="1576234791310" duration="1053000" />
     </task>
     <servers />
   </component>
@@ -119,15 +127,6 @@
     </option>
   </component>
   <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
-          <url>file://$PROJECT_DIR$/tools.c</url>
-          <line>95</line>
-          <option name="timeStamp" value="67" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
     <watches-manager>
       <configuration name="CMakeRunConfiguration">
         <watch expression="v1-&gt;degree" />
