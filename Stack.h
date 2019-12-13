@@ -5,7 +5,7 @@
 #include <stddef.h>
 
 typedef struct {
-   SOMMET **vertices;
+   Vertex **vertices;
    size_t capacity;
    size_t size;
 } Stack;
@@ -14,14 +14,14 @@ Stack *createStack(size_t initialCapacity);
 
 void freeStack(Stack *stack);
 
-bool pushStack(Stack *stack, SOMMET *vertex);
+bool pushStack(Stack *stack, Vertex *vertex);
 
-SOMMET *popStack(Stack *stack);
+Vertex *popStack(Stack *stack);
 
-bool isVertexInStack(Stack *stack, SOMMET *vertex);
+bool isVertexInStack(Stack *stack, Vertex *vertex);
 
 bool isStackEmpty(Stack *stack);
 
-void removeElementFromStack(Stack *stack, SOMMET *vertex);
+void removeElementFromStack(Stack *stack, Vertex *vertex);
 
 #endif //FIVE_COLOR_STACK_H

@@ -6,27 +6,26 @@
 #include "graph.h"
 #include "tools.h"
 
-static void colorGraph(GRAPHE *g);
+static void colorGraph(Graph *g);
 
 // https://en.wikipedia.org/wiki/Five_color_theorem
 int main() {
 	// ------------------------------------------ Graph example 1 ------------------------------------------
-	GRAPHE *graph1 = malloc(sizeof(GRAPHE));
-	initialiserGraphe(graph1);
+	Graph *graph1 = malloc(sizeof(Graph));
+	initializeGraph(graph1);
 
 	// We don't need to assign vertex positions for this type of graph
 	Position placeholder = {0, 0};
 
 	{
 		// We receive pointers instead of labels
-		SOMMET *a = ajouterSommet(graph1, placeholder);
-		SOMMET *b = ajouterSommet(graph1, placeholder);
-		SOMMET *c = ajouterSommet(graph1, placeholder);
-		SOMMET *d = ajouterSommet(graph1, placeholder);
-		SOMMET *e = ajouterSommet(graph1, placeholder);
-		SOMMET *f = ajouterSommet(graph1, placeholder);
+		Vertex *a = addVertex(graph1, placeholder);
+		Vertex *b = addVertex(graph1, placeholder);
+		Vertex *c = addVertex(graph1, placeholder);
+		Vertex *d = addVertex(graph1, placeholder);
+		Vertex *e = addVertex(graph1, placeholder);
+		Vertex *f = addVertex(graph1, placeholder);
 
-		// Returns 0 on success
 		addEdge(graph1, a, b);
 		addEdge(graph1, a, c);
 		addEdge(graph1, b, c);
@@ -43,8 +42,8 @@ int main() {
 	//  ------------------------------------------ Graph exemple 2 ( 5-complet )  ------------------------------------------
 	// https://i.stack.imgur.com/rO3SR.png
 	// It is a planar graph with a minimum degree of 5
-	GRAPHE *graph2 = malloc(sizeof(GRAPHE));
-	initialiserGraphe(graph2);
+	Graph *graph2 = malloc(sizeof(Graph));
+	initializeGraph(graph2);
 
 	{
 		Position aPos = {-4, 0};
@@ -60,18 +59,18 @@ int main() {
 		Position kPos = {-0.5, 3};
 		Position lPos = {0.5, 3};
 
-		SOMMET *a = ajouterSommet(graph2, aPos);
-		SOMMET *b = ajouterSommet(graph2, bPos);
-		SOMMET *c = ajouterSommet(graph2, cPos);
-		SOMMET *d = ajouterSommet(graph2, dPos);
-		SOMMET *e = ajouterSommet(graph2, ePos);
-		SOMMET *f = ajouterSommet(graph2, fPos);
-		SOMMET *g = ajouterSommet(graph2, gPos);
-		SOMMET *h = ajouterSommet(graph2, hPos);
-		SOMMET *i = ajouterSommet(graph2, iPos);
-		SOMMET *j = ajouterSommet(graph2, jPos);
-		SOMMET *k = ajouterSommet(graph2, kPos);
-		SOMMET *l = ajouterSommet(graph2, lPos);
+		Vertex *a = addVertex(graph2, aPos);
+		Vertex *b = addVertex(graph2, bPos);
+		Vertex *c = addVertex(graph2, cPos);
+		Vertex *d = addVertex(graph2, dPos);
+		Vertex *e = addVertex(graph2, ePos);
+		Vertex *f = addVertex(graph2, fPos);
+		Vertex *g = addVertex(graph2, gPos);
+		Vertex *h = addVertex(graph2, hPos);
+		Vertex *i = addVertex(graph2, iPos);
+		Vertex *j = addVertex(graph2, jPos);
+		Vertex *k = addVertex(graph2, kPos);
+		Vertex *l = addVertex(graph2, lPos);
 
 		addEdge(graph2, a, b);
 		addEdge(graph2, a, c);
@@ -118,18 +117,18 @@ int main() {
 
 	//  ------------------------------------------ Graph exemple 3 ( 3-complet )  ------------------------------------------
 	//https://www.cs.sfu.ca/~ggbaker/zju/math/planar.html (Q3)
-	GRAPHE *graph3 = malloc(sizeof(GRAPHE));
-	initialiserGraphe(graph3);
+	Graph *graph3 = malloc(sizeof(Graph));
+	initializeGraph(graph3);
 
 	{
-		SOMMET *a = ajouterSommet(graph3, placeholder);
-		SOMMET *b = ajouterSommet(graph3, placeholder);
-		SOMMET *c = ajouterSommet(graph3, placeholder);
-		SOMMET *d = ajouterSommet(graph3, placeholder);
-		SOMMET *e = ajouterSommet(graph3, placeholder);
-		SOMMET *f = ajouterSommet(graph3, placeholder);
-		SOMMET *g = ajouterSommet(graph3, placeholder);
-		SOMMET *h = ajouterSommet(graph3, placeholder);
+		Vertex *a = addVertex(graph3, placeholder);
+		Vertex *b = addVertex(graph3, placeholder);
+		Vertex *c = addVertex(graph3, placeholder);
+		Vertex *d = addVertex(graph3, placeholder);
+		Vertex *e = addVertex(graph3, placeholder);
+		Vertex *f = addVertex(graph3, placeholder);
+		Vertex *g = addVertex(graph3, placeholder);
+		Vertex *h = addVertex(graph3, placeholder);
 
 		addEdge(graph3, a, b);
 		addEdge(graph3, a, d);
@@ -155,14 +154,14 @@ int main() {
 	return 0;
 }
 
-static void colorGraph(GRAPHE *g) {
+static void colorGraph(Graph *g) {
 	Stack *s4 = createStack(100);
 	Stack *s5 = createStack(100);
 	Stack *sd = createStack(100);
 	Stack *sTrash = createStack(100);
 
 	printf("Initial graph:\n");
-	afficherGraphe(g);
+	printGraph(g);
 
 	// STEP 1
 	populateStacks(g, s4, s5);
@@ -173,7 +172,7 @@ static void colorGraph(GRAPHE *g) {
 		stack4ToStackD(g, s4, sd, s5);
 
 		// If the graph is empty
-		if (g->nbS == 0) {
+		if (g->nVertices == 0) {
 			break;
 		}
 
@@ -184,27 +183,27 @@ static void colorGraph(GRAPHE *g) {
 
 	// We finished parsing the graph
 	// Assign colors to the vertices
-	SOMMET *v;
+	Vertex *v;
 	while (!isStackEmpty(sd)) {
 		v = popStack(sd);
 
 		// Color merged vertex
 		if (v->mergedWith != NULL) {
-			v->info = v->mergedWith->info;
+			v->color = v->mergedWith->color;
 			pushStack(sTrash, v);
 			continue;
 		}
 
 		// Choose a color different than all its neighbours
 		Color c[5] = {0, 1, 2, 3, 4};
-		ELTADJ *padj = v->adj;
-		for (size_t i = 0; i < v->adjSize; i++, padj = padj->suivant) {
-			if (padj->vertex->info >= 0 && padj->vertex->info < 5) {
-				c[padj->vertex->info] = -1;
+		AdjList *padj = v->adj;
+		for (size_t i = 0; i < v->adjSize; i++, padj = padj->next) {
+			if (padj->vertex->color >= 0 && padj->vertex->color < 5) {
+				c[padj->vertex->color] = -1;
 			}
 		}
 
-		v->info = getColorFromArray(c);
+		v->color = getColorFromArray(c);
 		pushStack(sTrash, v);
 	}
 
@@ -212,7 +211,7 @@ static void colorGraph(GRAPHE *g) {
 	printf("\n----- Affichage des couleurs des différents sommets -----\n");
 	while (!isStackEmpty(sTrash)) {
 		v = popStack(sTrash);
-		printf("v(%d):\t%s\n", v->label, colorToString(v->info));
+		printf("v(%d):\t%s\n", v->label, colorToString(v->color));
 	}
 	printf("\n");
 }

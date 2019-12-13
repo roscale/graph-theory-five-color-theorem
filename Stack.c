@@ -11,7 +11,7 @@ Stack *createStack(size_t initialCapacity) {
 
 	stack->capacity = initialCapacity;
 	stack->size = 0;
-	stack->vertices = malloc(initialCapacity * sizeof(SOMMET *));
+	stack->vertices = malloc(initialCapacity * sizeof(Vertex *));
 
 	return stack;
 }
@@ -25,13 +25,13 @@ void freeStack(Stack *stack) {
 	}
 }
 
-bool pushStack(Stack *stack, SOMMET *vertex) {
+bool pushStack(Stack *stack, Vertex *vertex) {
 	assert(stack != NULL && vertex != NULL);
 
 	if (stack->size >= stack->capacity) {
 		// Resize array
-		SOMMET **new_array = realloc(stack->vertices, 2 * stack->capacity *
-		                                              sizeof(SOMMET *));
+		Vertex **new_array = realloc(stack->vertices, 2 * stack->capacity *
+		                                              sizeof(Vertex *));
 		if (new_array != NULL) {
 			stack->vertices = new_array;
 			stack->capacity *= 2;
@@ -43,9 +43,9 @@ bool pushStack(Stack *stack, SOMMET *vertex) {
 	return true;
 }
 
-bool isVertexInStack(Stack *stack, SOMMET *vertex) {
+bool isVertexInStack(Stack *stack, Vertex *vertex) {
 	assert(stack != NULL && vertex != NULL);
-	SOMMET **v = stack->vertices;
+	Vertex **v = stack->vertices;
 	for (unsigned i = 0; v[i] != NULL && i < stack->size; ++i) {
 		if (v[i]->label == vertex->label) {
 			return true;
@@ -54,7 +54,7 @@ bool isVertexInStack(Stack *stack, SOMMET *vertex) {
 	return false;
 }
 
-SOMMET *popStack(Stack *stack) {
+Vertex *popStack(Stack *stack) {
 	assert(stack != NULL);
 
 	if (stack->size == 0) {
@@ -70,7 +70,7 @@ bool isStackEmpty(Stack *stack) {
 }
 
 
-void removeElementFromStack(Stack *stack, SOMMET *vertex) {
+void removeElementFromStack(Stack *stack, Vertex *vertex) {
 	assert(stack != NULL && vertex != NULL);
 	bool vertex_found = false;
 

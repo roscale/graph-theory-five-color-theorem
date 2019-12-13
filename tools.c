@@ -3,29 +3,29 @@
 /*
  * Checks whether 2 vertices are neighbours
  */
-static bool areNeighbours(SOMMET *v1, SOMMET *v2) {
-	ELTADJ *adj = v1->adj;
+static bool areNeighbours(Vertex *v1, Vertex *v2) {
+	AdjList *adj = v1->adj;
 	for (size_t i = 0; i < v1->adjSize; i++) {
 		if (adj->vertex == v2) {
 			return true;
 		}
-		adj = adj->suivant;
+		adj = adj->next;
 	}
 	return false;
 }
 
-bool vertexMatchesConditionsForS4(SOMMET *vertex) {
+bool vertexMatchesConditionsForS4(Vertex *vertex) {
 	// Degree at most 4
 	return vertex->degree <= 4;
 }
 
-bool vertexMatchesConditionsForS5(SOMMET *vertex) {
+bool vertexMatchesConditionsForS5(Vertex *vertex) {
 	// Degree five
 	if (vertex->degree == 5) {
 		// and at least one adjacent vertex with degree at most six
-		ELTADJ *adj = vertex->adj;
+		AdjList *adj = vertex->adj;
 		for (size_t i = 0;
-		     adj != NULL && i < vertex->adjSize; i++, adj = adj->suivant) {
+		     adj != NULL && i < vertex->adjSize; i++, adj = adj->next) {
 			if (adj->vertex->degree <= 6) {
 				return true;
 			}
@@ -34,8 +34,8 @@ bool vertexMatchesConditionsForS5(SOMMET *vertex) {
 	return false;
 }
 
-void populateStacks(GRAPHE *graph, Stack *s4, Stack *s5) {
-	for (SOMMET *v = graph->premierSommet; v != NULL; v = v->suivant) {
+void populateStacks(Graph *graph, Stack *s4, Stack *s5) {
+	for (Vertex *v = graph->firstVertex; v != NULL; v = v->next) {
 		if (vertexMatchesConditionsForS4(v)) {
 			pushStack(s4, v);
 		} else if (vertexMatchesConditionsForS5(v)) {
@@ -44,19 +44,19 @@ void populateStacks(GRAPHE *graph, Stack *s4, Stack *s5) {
 	}
 }
 
-void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
-	SOMMET *v;
+void stack4ToStackD(Graph *graph, Stack *s4, Stack *sd, Stack *s5) {
+	Vertex *v;
 	while (!isStackEmpty(s4)) {
 		// Transfer v from s4 to sd
 		v = popStack(s4);
-		supprimerSommet(graph, v);
+		removeVertex(graph, v);
 		pushStack(sd, v);
 
 		// Check the neighbours of v and update the stacks
-		ELTADJ *padj = v->adj;
+		AdjList *adj = v->adj;
 		for (size_t i = 0;
-		     padj != NULL && i < v->adjSize; i++, padj = padj->suivant) {
-			SOMMET *neighbour = padj->vertex;
+		     adj != NULL && i < v->adjSize; i++, adj = adj->next) {
+			Vertex *neighbour = adj->vertex;
 			if (vertexMatchesConditionsForS4(neighbour)) {
 				removeElementFromStack(s5, neighbour);
 				if (!isVertexInStack(s4, neighbour)) {
@@ -72,20 +72,20 @@ void stack4ToStackD(GRAPHE *graph, Stack *s4, Stack *sd, Stack *s5) {
 	}
 }
 
-void mergeVertices(GRAPHE *graph, Stack *s4, Stack *s5, Stack *sd) {
+void mergeVertices(Graph *graph, Stack *s4, Stack *s5, Stack *sd) {
 	assert(!isStackEmpty(s5));
 
-	SOMMET *v = popStack(s5);
+	Vertex *v = popStack(s5);
 	// Remove v from the graph
-	supprimerSommet(graph, v);
+	removeVertex(graph, v);
 	pushStack(sd, v);
 
-	SOMMET *v1 = v->adj->vertex;
-	SOMMET *v2 = v->adj->suivant->vertex;
-	SOMMET *v3 = v->adj->suivant->suivant->vertex;
-	SOMMET *v4 = v->adj->suivant->suivant->suivant->vertex;
+	Vertex *v1 = v->adj->vertex;
+	Vertex *v2 = v->adj->next->vertex;
+	Vertex *v3 = v->adj->next->next->vertex;
+	Vertex *v4 = v->adj->next->next->next->vertex;
 
-	SOMMET *mergingTo, *mergingFrom;
+	Vertex *mergingTo, *mergingFrom;
 
 	if (!areNeighbours(v1, v3)) {
 		mergingTo = v1;
@@ -96,64 +96,63 @@ void mergeVertices(GRAPHE *graph, Stack *s4, Stack *s5, Stack *sd) {
 	}
 
 	// Do the merging
-	ELTADJ *adj1 = mergingTo->adj;
-	ELTADJ *adj2 = mergingFrom->adj;
-	size_t sizeAdj1 = mergingTo->adjSize;
-	size_t sizeAdj2 = mergingFrom->adjSize;
+	AdjList *adjTo = mergingTo->adj;
+	AdjList *adjFrom = mergingFrom->adj;
+	size_t sizeAdjTo = mergingTo->adjSize;
+	size_t sizeAdjFrom = mergingFrom->adjSize;
 
 	// Transfer all the neighbours from one vertex to the other
-	ELTADJ *adj = mergingFrom->adj;
-	for (size_t i = 0; i < sizeAdj2; i++) {
-		SOMMET *neighbour = adj->vertex;
+	for (size_t i = 0; i < sizeAdjFrom; i++) {
+		Vertex *neighbour = adjFrom->vertex;
 
-		ELTADJ *prec = neighbour->adj;
-		ELTADJ *adjNeighbour = neighbour->adj->suivant;
+		AdjList *previous = neighbour->adj;
+		AdjList *adjNeighbour = neighbour->adj->next;
 		for (size_t j = 0; j < neighbour->adjSize; j++) {
 			if (adjNeighbour->vertex == mergingTo) {
 				// Remove duplicate edge from the circular list
-				prec->suivant = adjNeighbour->suivant;
+				previous->next = adjNeighbour->next;
 				neighbour->adjSize--;
 				neighbour->degree--;
-				adjNeighbour = adjNeighbour->suivant;
+				adjNeighbour = adjNeighbour->next;
 
 				continue;
 			}
 			if (adjNeighbour->vertex == mergingFrom) {
 				adjNeighbour->vertex = mergingTo;
 			}
-			prec = prec->suivant;
-			adjNeighbour = adjNeighbour->suivant;
+			previous = previous->next;
+			adjNeighbour = adjNeighbour->next;
 		}
 
-		adj = adj->suivant;
+		adjFrom = adjFrom->next;
 	}
 
 	// Splice the adjacency lists
 
 	// Find v inside the 2 circular lists
-	ELTADJ *pl1_prec = adj1;
-	ELTADJ *pl1_act = adj1->suivant;
-	for (size_t i = 0; i < sizeAdj1; i++) {
+	AdjList *pl1_prec = adjTo;
+	AdjList *pl1_act = adjTo->next;
+	for (size_t i = 0; i < sizeAdjTo; i++) {
 		if (pl1_act->vertex == v) {
 			break;
 		}
 		pl1_prec = pl1_act;
-		pl1_act = pl1_act->suivant;
+		pl1_act = pl1_act->next;
 	}
 
 	//		------ Looking inside L2
-	ELTADJ *pl2_prec = adj2;
-	ELTADJ *pl2_act = adj2->suivant;
-	for (size_t i = 0; i < sizeAdj2; i++) {
+	AdjList *pl2_prec = adjFrom;
+	AdjList *pl2_act = adjFrom->next;
+	for (size_t i = 0; i < sizeAdjFrom; i++) {
 		if (pl2_act->vertex == v) {
 			break;
 		}
 		pl2_prec = pl2_act;
-		pl2_act = pl2_act->suivant;
+		pl2_act = pl2_act->next;
 	}
 
 	// Update vertices caused by removing v from the graph
-	adj = v->adj;
+	AdjList *adj = v->adj;
 	for (size_t i = 0; i < v->adjSize; i++) {
 		if (vertexMatchesConditionsForS4(adj->vertex)) {
 			removeElementFromStack(s5, adj->vertex);
@@ -166,33 +165,33 @@ void mergeVertices(GRAPHE *graph, Stack *s4, Stack *s5, Stack *sd) {
 				pushStack(s5, adj->vertex);
 			}
 		}
-		adj = adj->suivant;
+		adj = adj->next;
 	}
 
 	// Splice the 2 lists
-	pl1_prec->suivant = pl2_act->suivant;
-	pl2_prec->suivant = pl1_act->suivant;
+	pl1_prec->next = pl2_act->next;
+	pl2_prec->next = pl1_act->next;
 
 	// Skip duplicate edge (sometimes the 2 vertices share the same neighbour)
 	bool skipDuplicateEdge = false;
-	if (pl1_prec->vertex == pl1_prec->suivant->vertex) {
-		pl1_prec->suivant = pl1_prec->suivant->suivant;
+	if (pl1_prec->vertex == pl1_prec->next->vertex) {
+		pl1_prec->next = pl1_prec->next->next;
 		skipDuplicateEdge = true;
 	}
 
 	// Reset circular list head if we happen to remove the element it points to
 	if (mergingTo->adj->vertex == v) {
-		mergingTo->adj = pl1_prec->suivant;
+		mergingTo->adj = pl1_prec->next;
 	}
 
 	// Minus 2 because we have deleted v twice from both lists
-	mergingTo->adjSize = sizeAdj1 + sizeAdj2 - 2;
+	mergingTo->adjSize = sizeAdjTo + sizeAdjFrom - 2;
 	if (skipDuplicateEdge) {
 		mergingTo->adjSize--;
 	}
 	mergingTo->degree = mergingTo->adjSize;
 
-	supprimerSommet(graph, mergingFrom);
+	removeVertex(graph, mergingFrom);
 	removeElementFromStack(s4, mergingFrom);
 	removeElementFromStack(s5, mergingFrom);
 	pushStack(sd, mergingFrom);
@@ -227,7 +226,7 @@ void mergeVertices(GRAPHE *graph, Stack *s4, Stack *s5, Stack *sd) {
 				pushStack(s5, adj->vertex);
 			}
 		}
-		adj = adj->suivant;
+		adj = adj->next;
 	}
 }
 

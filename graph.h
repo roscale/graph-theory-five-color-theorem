@@ -18,52 +18,52 @@ typedef struct {
    double x, y;
 } Position;
 
-struct sommet {
+struct Vertex {
    int label;
-   Color info;
+   Color color;
    int degree; // inner and outer degree
    Position position;
-   struct sommet *suivant;
-   struct eltadj *adj; // circular list
-   size_t adjSize; // The size of the adjacency list
-   struct sommet *mergedWith;
+   struct Vertex *next;
+   struct AdjList *adj; // the adjacency list (circular list)
+   size_t adjSize; // the size of the adjacency list
+   struct Vertex *mergedWith;
 };
 
-struct eltadj {
-   struct sommet *vertex;
+struct AdjList {
+   struct Vertex *vertex;
    // The angle of the neighbour relative to this vertex
    // From -pi/2 to pi/2 for now
    double relative_angle;
-   struct eltadj *suivant;
+   struct AdjList *next;
 };
 
-struct graphe {
-   int nbS;
-   int nbA;
-   int maxS;
-   struct sommet *premierSommet;
-   struct sommet *dernierSommet;
+struct Graph {
+   int nVertices;
+   int nArcs;
+   int maxVertices;
+   struct Vertex *firstVertex;
+   struct Vertex *lastVertex;
 };
 
-typedef struct graphe GRAPHE;
-typedef struct sommet SOMMET;
-typedef struct eltadj ELTADJ;
+typedef struct Graph Graph;
+typedef struct Vertex Vertex;
+typedef struct AdjList AdjList;
 
-void initialiserGraphe(GRAPHE *);
+void initializeGraph(Graph *g);
 
-SOMMET * ajouterSommet(GRAPHE *g, Position position);
+Vertex *addVertex(Graph *g, Position position);
 
-int ajouterArc(GRAPHE *g, SOMMET *a, SOMMET *b);
+int addArc(Graph *g, Vertex *a, Vertex *b);
 
-int supprimerSommet(GRAPHE *g, SOMMET *a);
+int removeVertex(Graph *g, Vertex *a);
 
-int supprimerArc(SOMMET *a, SOMMET *b);
+int removeArc(Vertex *a, Vertex *b);
 
-bool addEdge(GRAPHE *g, SOMMET *a, SOMMET *b);
+bool addEdge(Graph *g, Vertex *a, Vertex *b);
 
-void supprimerGraphe(GRAPHE *);
+void supprimerGraphe(Graph *g);
 
-void afficherGraphe(GRAPHE *);
+void printGraph(Graph *g);
 
 const char *colorToString(Color color);
 

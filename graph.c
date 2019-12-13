@@ -8,82 +8,80 @@
 #define M_PI 3.14159265358979323846
 #endif
 
-void initialiserGraphe(GRAPHE *g) {
-	g->nbS = 0;
-	g->nbA = 0;
-	g->maxS = 0;
-	g->premierSommet = NULL;
-	g->dernierSommet = NULL;
+void initializeGraph(Graph *g) {
+	g->nVertices = 0;
+	g->nArcs = 0;
+	g->maxVertices = 0;
+	g->firstVertex = NULL;
+	g->lastVertex = NULL;
 }
 
-SOMMET *ajouterSommet(GRAPHE *g, Position position) {
-	SOMMET *pointeur;
-	g->maxS++;
+Vertex *addVertex(Graph *g, Position position) {
+	Vertex *v;
+	g->maxVertices++;
 
 	// Allocate memory for the vertex
-	pointeur = (SOMMET *) malloc(sizeof(SOMMET));
-	if (pointeur == NULL) {
+	v = (Vertex *) malloc(sizeof(Vertex));
+	if (v == NULL) {
 		printf("Erreur! Memoire insuffisante pour creer un sommet\n");
 		return NULL;
 	} else {
-		pointeur->label = g->maxS;
-		pointeur->position = position;
-		pointeur->degree = 0;
-		pointeur->suivant = NULL;
-		pointeur->adj = NULL;
-		pointeur->adjSize = 0;
-		pointeur->info = -1;
-		pointeur->mergedWith = NULL;
+		v->label = g->maxVertices;
+		v->position = position;
+		v->degree = 0;
+		v->next = NULL;
+		v->adj = NULL;
+		v->adjSize = 0;
+		v->color = -1;
+		v->mergedWith = NULL;
 
-		if (g->nbS == 0) {
-			g->premierSommet = pointeur;
-			g->dernierSommet = pointeur;
+		if (g->nVertices == 0) {
+			g->firstVertex = v;
+			g->lastVertex = v;
 		} else {
-			g->dernierSommet->suivant = pointeur;
-			g->dernierSommet = pointeur;
+			g->lastVertex->next = v;
+			g->lastVertex = v;
 		}
-		g->nbS++;
-		return pointeur;
+		g->nVertices++;
+		return v;
 	}
 }
 
-int ajouterArc(GRAPHE *g, SOMMET *a, SOMMET *b) {
-	SOMMET *psommet = a;
-
+int addArc(Graph *g, Vertex *a, Vertex *b) {
 	// We take the opposite in order to inverse the order
 	// clockwise instead of counterclockwise
 	double relative_angle = -atan2(
 		  b->position.y - a->position.y,
 		  b->position.x - a->position.x);
 
-	ELTADJ *padj = (ELTADJ *) malloc(sizeof(ELTADJ));
-	if (padj == NULL) {
+	AdjList *adj = (AdjList *) malloc(sizeof(AdjList));
+	if (adj == NULL) {
 		printf("Erreur! Memoire insuffisante pour creer un sommet\n");
 		return -3;
 	}
 
 	// The adjacency list is empty
-	if (psommet->adj == NULL) {
-		psommet->adjSize = 0;
-		psommet->adj = padj;
-		padj->suivant = padj;
+	if (a->adj == NULL) {
+		a->adjSize = 0;
+		a->adj = adj;
+		adj->next = adj;
 
-	} else if (psommet->adjSize == 1) {
+	} else if (a->adjSize == 1) {
 		// Only one element, doesn't matter where we add it
-		psommet->adj->suivant = padj;
-		padj->suivant = psommet->adj;
+		a->adj->next = adj;
+		adj->next = a->adj;
 
 		// Begin the circular list with a vertex degree at most 6
 		if (b->degree <= 6) {
-			psommet->adj = padj;
+			a->adj = adj;
 		}
 
-	} else if (psommet->adjSize >= 2) {
-		ELTADJ *before = psommet->adj;
-		ELTADJ *after = psommet->adj->suivant;
+	} else if (a->adjSize >= 2) {
+		AdjList *before = a->adj;
+		AdjList *after = a->adj->next;
 
 		// Iterate the list
-		for (size_t i = 0; i < psommet->adjSize; i++) {
+		for (size_t i = 0; i < a->adjSize; i++) {
 			double beforeAngle = before->relative_angle;
 			double afterAngle = after->relative_angle;
 
@@ -102,80 +100,80 @@ int ajouterArc(GRAPHE *g, SOMMET *a, SOMMET *b) {
 			    relative_angle <= afterAngle) {
 
 				// Insert it in-between
-				padj->suivant = after;
-				before->suivant = padj;
+				adj->next = after;
+				before->next = adj;
 				break;
 			}
 
-			before = before->suivant;
-			after = after->suivant;
+			before = before->next;
+			after = after->next;
 		}
 	}
 
-	padj->vertex = b;
-	padj->relative_angle = relative_angle;
-	g->nbA++;
-	psommet->degree++;
-	psommet->adjSize++;
+	adj->vertex = b;
+	adj->relative_angle = relative_angle;
+	g->nArcs++;
+	a->degree++;
+	a->adjSize++;
 	return 0;
 }
 
-bool addEdge(GRAPHE *g, SOMMET *a, SOMMET *b) {
-	if (ajouterArc(g, a, b) != 0) {
+bool addEdge(Graph *g, Vertex *a, Vertex *b) {
+	if (addArc(g, a, b) != 0) {
 		return false;
 	}
-	if (ajouterArc(g, b, a) != 0) {
+	if (addArc(g, b, a) != 0) {
 		return false;
 	}
 	return true;
 }
 
-int supprimerSommet(GRAPHE *g, SOMMET *a) {
-	SOMMET *psommet, *precedent;
-	int flag_premier_sommet;
+int removeVertex(Graph *g, Vertex *a) {
+	Vertex *current, *previous;
+	int flagFirstVertex;
 
 	// The graph is empty
-	if (g->premierSommet == NULL) {
+	if (g->firstVertex == NULL) {
 		printf("Erreur! Graphe vide, suppression impossible\n");
 		return -1;
 	} else {
 		// We search the vertex in the graph
-		psommet = g->premierSommet;
-		flag_premier_sommet = 1;
-		while (psommet != NULL) {
-			if (psommet == a) break;
+		current = g->firstVertex;
+		flagFirstVertex = 1;
+		while (current != NULL) {
+			if (current == a) break;
 			else {
-				flag_premier_sommet = 0;
-				precedent = psommet;
-				psommet = psommet->suivant;
+				flagFirstVertex = 0;
+				previous = current;
+				current = current->next;
 			}
 		}
 		// The vertex doesn't exist in the graph
-		if (psommet == NULL) {
+		if (current == NULL) {
 			printf("Erreur! Le sommet a supprimer n'existe pas\n");
 			return -1;
 		} else {
 			// Remove the vertex from the graph
-			if (psommet->suivant == NULL) g->dernierSommet = precedent;
+			if (current->next == NULL) g->lastVertex = previous;
 
-			if (flag_premier_sommet == 1) g->premierSommet = psommet->suivant;
-			else precedent->suivant = psommet->suivant;
-			g->nbS--;
+			if (flagFirstVertex == 1) g->firstVertex = current->next;
+			else previous->next = current->next;
+			g->nVertices--;
 		}
 
-		g->nbA -= psommet->adjSize;
+		g->nArcs -= current->adjSize;
 
 		// Also remove any links between the neighbours of the vertex
-		psommet = g->premierSommet;
-		while (psommet != NULL) {
-			supprimerArc(psommet, a);
-			psommet = psommet->suivant;
+		current = g->firstVertex;
+		while (current != NULL) {
+			removeArc(current, a);
+			current = current->next;
 		}
 		return 0;
 	}
 }
 
-int supprimerArc(SOMMET *a, SOMMET *b) {
+int removeArc(Vertex *a, Vertex *b) {
 	// No elements in the adjacency list
 	if (a->adj == NULL) {
 		return -1;
@@ -194,13 +192,13 @@ int supprimerArc(SOMMET *a, SOMMET *b) {
 		// Multiple elements left
 	else if (a->adjSize >= 2) {
 		// Iterate the list with 2 pointers concurrently
-		ELTADJ *previous = a->adj;
-		ELTADJ *current = a->adj->suivant;
+		AdjList *previous = a->adj;
+		AdjList *current = a->adj->next;
 
 		bool found = false;
 		for (size_t i = 0; i < a->adjSize; i++) {
 			if (current->vertex == b) {
-				previous->suivant = current->suivant;
+				previous->next = current->next;
 
 				// If we remove the head of the list
 				if (a->adj == current) {
@@ -213,8 +211,8 @@ int supprimerArc(SOMMET *a, SOMMET *b) {
 				break;
 			}
 
-			previous = previous->suivant;
-			current = current->suivant;
+			previous = previous->next;
+			current = current->next;
 		}
 
 		if (!found) {
@@ -227,22 +225,22 @@ int supprimerArc(SOMMET *a, SOMMET *b) {
 
 // DO NOT USE
 // TODO Fix freeing of the circular adjacency list
-void supprimerGraphe(GRAPHE *g) {
-	SOMMET *psommet, *temps;
-	ELTADJ *padj, *tempadj;
-	psommet = g->premierSommet;
+void supprimerGraphe(Graph *g) {
+	Vertex *psommet, *temps;
+	AdjList *padj, *tempadj;
+	psommet = g->firstVertex;
 	while (psommet != NULL) {
 		padj = psommet->adj;
 		while (padj != NULL) {
 			tempadj = padj;
-			padj = padj->suivant;
+			padj = padj->next;
 			free(tempadj);
 		}
 		temps = psommet;
-		psommet = psommet->suivant;
+		psommet = psommet->next;
 		free(temps);
 	}
-	initialiserGraphe(g);
+	initializeGraph(g);
 }
 
 const char *colorToString(Color color) {
@@ -262,33 +260,33 @@ const char *colorToString(Color color) {
 	}
 }
 
-void afficherGraphe(GRAPHE *g) {
-	SOMMET *psommet;
-	if (g->premierSommet == NULL) printf("graphe vide\n");
+void printGraph(Graph *g) {
+	Vertex *vertex;
+	if (g->firstVertex == NULL) printf("graphe vide\n");
 	else {
-		printf("nbS=%d , nbA=%d, label max.=%d\n", g->nbS, g->nbA, g->maxS);
-		psommet = g->premierSommet;
+		printf("nbS=%d , nbA=%d, label max.=%d\n", g->nVertices, g->nArcs, g->maxVertices);
+		vertex = g->firstVertex;
 
 		do {
 			// Print this vertex
 			printf("\nSommet de label: %d, degre: %d et couleur: %s\n",
-			       psommet->label, psommet->degree,
-			       colorToString(psommet->info));
+			       vertex->label, vertex->degree,
+			       colorToString(vertex->color));
 
-			if (psommet->adj == NULL)
+			if (vertex->adj == NULL)
 				printf(" -> ce sommet n'a aucun arc sortant\n\n");
 
 			// Print neighbours
-			ELTADJ *adj = psommet->adj;
-			for (size_t i = 0; i < psommet->adjSize; i++) {
+			AdjList *adj = vertex->adj;
+			for (size_t i = 0; i < vertex->adjSize; i++) {
 				printf(" -> arc de %d vers %d, couleur: %s\n",
-				       psommet->label, adj->vertex->label,
-				       colorToString(adj->vertex->info));
+				       vertex->label, adj->vertex->label,
+				       colorToString(adj->vertex->color));
 
-				adj = adj->suivant;
+				adj = adj->next;
 			}
 
-			psommet = psommet->suivant;
-		} while (psommet != NULL);
+			vertex = vertex->next;
+		} while (vertex != NULL);
 	}
 }

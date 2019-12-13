@@ -6,12 +6,12 @@
 int main() {
 	// DO NOT dereference these pointers, they contain invalid addresses
 	// They just simulate some vertices
-	SOMMET *a = (SOMMET *) 1;
-	SOMMET *b = (SOMMET *) 2;
-	SOMMET *c = (SOMMET *) 3;
-	SOMMET *d = (SOMMET *) 4;
-	SOMMET *e = (SOMMET *) 5;
-	SOMMET *f = (SOMMET *) 6;
+	Vertex *a = (Vertex *) 1;
+	Vertex *b = (Vertex *) 2;
+	Vertex *c = (Vertex *) 3;
+	Vertex *d = (Vertex *) 4;
+	Vertex *e = (Vertex *) 5;
+	Vertex *f = (Vertex *) 6;
 
 	Stack *stack = createStack(3);
 	assert(pushStack(stack, a) == true);
