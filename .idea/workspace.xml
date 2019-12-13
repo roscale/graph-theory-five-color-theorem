@@ -14,14 +14,11 @@
   <component name="ChangeListManager">
     <list default="true" id="6c33dda4-2f31-473d-8cde-86a471664311" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Stack.c" beforeDir="false" afterPath="$PROJECT_DIR$/Stack.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph.c" beforeDir="false" afterPath="$PROJECT_DIR$/graph.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/graph.h" beforeDir="false" afterPath="$PROJECT_DIR$/graph.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools.c" beforeDir="false" afterPath="$PROJECT_DIR$/tools.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools.h" beforeDir="false" afterPath="$PROJECT_DIR$/tools.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapport/rapport.aux" beforeDir="false" afterPath="$PROJECT_DIR$/rapport/rapport.aux" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapport/rapport.log" beforeDir="false" afterPath="$PROJECT_DIR$/rapport/rapport.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapport/rapport.pdf" beforeDir="false" afterPath="$PROJECT_DIR$/rapport/rapport.pdf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapport/rapport.synctex.gz" beforeDir="false" afterPath="$PROJECT_DIR$/rapport/rapport.synctex.gz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/rapport/rapport.tex" beforeDir="false" afterPath="$PROJECT_DIR$/rapport/rapport.tex" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +29,6 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -62,7 +58,17 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="CMake Application.five_color">
+  <component name="RunManager" selected="LaTeX.Rapport">
+    <configuration name="rapport bibliography" type="BIBTEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify-bibtex>
+        <compiler>BIBTEX</compiler>
+        <compiler-path />
+        <compiler-arguments />
+        <main-file>$PROJECT_DIR$/rapport/rapport.tex</main-file>
+        <aux-dir>$PROJECT_DIR$/rapport</aux-dir>
+      </texify-bibtex>
+      <method v="2" />
+    </configuration>
     <configuration name="five_color" type="CMakeRunConfiguration" factoryName="Application" PASS_PARENT_ENVS_2="true" PROJECT_NAME="five_color" TARGET_NAME="five_color" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="five_color" RUN_TARGET_NAME="five_color">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
@@ -73,9 +79,26 @@
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Rapport" type="LATEX_RUN_CONFIGURATION" factoryName="LaTeX configuration factory">
+      <texify>
+        <compiler>PDFLATEX</compiler>
+        <compiler-path />
+        <sumatra-path />
+        <viewer-command />
+        <compiler-arguments />
+        <main-file>$PROJECT_DIR$/rapport/rapport.tex</main-file>
+        <aux-dir>false</aux-dir>
+        <out-dir>false</out-dir>
+        <output-format>PDF</output-format>
+        <bib-run-config>BibTeX.rapport bibliography</bib-run-config>
+      </texify>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="CMake Application.five_color" />
       <item itemvalue="CMake Application.test_stack" />
+      <item itemvalue="LaTeX.Rapport" />
+      <item itemvalue="BibTeX.rapport bibliography" />
     </list>
   </component>
   <component name="SvnConfiguration">
