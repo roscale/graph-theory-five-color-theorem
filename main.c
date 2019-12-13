@@ -11,7 +11,7 @@ static void colorGraph(Graph *g);
 // https://en.wikipedia.org/wiki/Five_color_theorem
 int main() {
 	// ------------------------------------------ Graph example 1 ------------------------------------------
-	Graph *graph1 = malloc(sizeof(Graph));
+	Graph *graph1 = allocateMemory(sizeof(Graph));
 	initializeGraph(graph1);
 
 	// We don't need to assign vertex positions for this type of graph
@@ -42,7 +42,7 @@ int main() {
 	//  ------------------------------------------ Graph exemple 2 ( 5-complet )  ------------------------------------------
 	// https://i.stack.imgur.com/rO3SR.png
 	// It is a planar graph with a minimum degree of 5
-	Graph *graph2 = malloc(sizeof(Graph));
+	Graph *graph2 = allocateMemory(sizeof(Graph));
 	initializeGraph(graph2);
 
 	{
@@ -117,7 +117,7 @@ int main() {
 
 	//  ------------------------------------------ Graph exemple 3 ( 3-complet )  ------------------------------------------
 	//https://www.cs.sfu.ca/~ggbaker/zju/math/planar.html (Q3)
-	Graph *graph3 = malloc(sizeof(Graph));
+	Graph *graph3 = allocateMemory(sizeof(Graph));
 	initializeGraph(graph3);
 
 	{
@@ -214,4 +214,7 @@ static void colorGraph(Graph *g) {
 		printf("v(%d):\t%s\n", v->label, colorToString(v->color));
 	}
 	printf("\n");
+
+	// Free all the allocated memory
+	freeMemory();
 }

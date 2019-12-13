@@ -1,5 +1,27 @@
 #include "tools.h"
 
+// Store pointers to all the heap allocated memory
+static void *pointers[1000];
+static size_t nPointers = 0;
+
+void *allocateMemory(size_t size) {
+	void *p = malloc(size);
+	if (p != NULL) {
+		pointers[nPointers++] = p;
+		return p;
+	} else {
+		freeMemory();
+		fprintf(stderr, "Memory allocation error\n");
+		exit(1);
+	}
+}
+
+void freeMemory() {
+	for (size_t i = 0; i < nPointers; i++) {
+		free(pointers[i]);
+	}
+}
+
 /*
  * Checks whether 2 vertices are neighbours
  */

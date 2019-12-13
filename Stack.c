@@ -1,17 +1,22 @@
 #include "Stack.h"
 #include "graph.h"
+#include "tools.h"
 #include <stdlib.h>
 #include <assert.h>
+#include <memory.h>
 
 Stack *createStack(size_t initialCapacity) {
-	Stack *stack = malloc(sizeof(Stack));
+	Stack *stack = allocateMemory(sizeof(Stack));
 	if (stack == NULL) {
 		return NULL;
 	}
 
 	stack->capacity = initialCapacity;
 	stack->size = 0;
-	stack->vertices = malloc(initialCapacity * sizeof(Vertex *));
+	stack->vertices = allocateMemory(initialCapacity * sizeof(Vertex *));
+
+	// Zero out the memory
+	memset(stack->vertices, 0, initialCapacity * sizeof(Vertex *));
 
 	return stack;
 }

@@ -61,8 +61,6 @@ int removeArc(Vertex *a, Vertex *b);
 
 bool addEdge(Graph *g, Vertex *a, Vertex *b);
 
-void supprimerGraphe(Graph *g);
-
 void printGraph(Graph *g);
 
 const char *colorToString(Color color);

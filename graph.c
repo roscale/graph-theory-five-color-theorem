@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdbool.h>
-#include <stdlib.h>
 #include <math.h>
 #include "graph.h"
+#include "tools.h"
 
 #ifndef M_PI
 #define M_PI 3.14159265358979323846
@@ -21,7 +21,7 @@ Vertex *addVertex(Graph *g, Position position) {
 	g->maxVertices++;
 
 	// Allocate memory for the vertex
-	v = (Vertex *) malloc(sizeof(Vertex));
+	v = (Vertex *) allocateMemory(sizeof(Vertex));
 	if (v == NULL) {
 		printf("Erreur! Memoire insuffisante pour creer un sommet\n");
 		return NULL;
@@ -54,7 +54,7 @@ int addArc(Graph *g, Vertex *a, Vertex *b) {
 		  b->position.y - a->position.y,
 		  b->position.x - a->position.x);
 
-	AdjList *adj = (AdjList *) malloc(sizeof(AdjList));
+	AdjList *adj = (AdjList *) allocateMemory(sizeof(AdjList));
 	if (adj == NULL) {
 		printf("Erreur! Memoire insuffisante pour creer un sommet\n");
 		return -3;
@@ -182,7 +182,6 @@ int removeArc(Vertex *a, Vertex *b) {
 		// One element left
 	else if (a->adjSize == 1) {
 		if (a->adj->vertex == b) {
-			free(a->adj);
 			a->adj = NULL;
 			a->adjSize--;
 			a->degree--;
@@ -221,26 +220,6 @@ int removeArc(Vertex *a, Vertex *b) {
 	}
 
 	return 0;
-}
-
-// DO NOT USE
-// TODO Fix freeing of the circular adjacency list
-void supprimerGraphe(Graph *g) {
-	Vertex *psommet, *temps;
-	AdjList *padj, *tempadj;
-	psommet = g->firstVertex;
-	while (psommet != NULL) {
-		padj = psommet->adj;
-		while (padj != NULL) {
-			tempadj = padj;
-			padj = padj->next;
-			free(tempadj);
-		}
-		temps = psommet;
-		psommet = psommet->next;
-		free(temps);
-	}
-	initializeGraph(g);
 }
 
 const char *colorToString(Color color) {

@@ -29,7 +29,7 @@ tools.o: tools.c tools.h Stack.h graph.h
 	$(CC) -c tools.c -o tools.o  $(CFLAGS)
 
 testStack: testStack.c graph.c Stack.c
-	$(CC) $(LDFLAGS) -o testStack testStack.c graph.c Stack.c -lm
+	$(CC) $(LDFLAGS) -o testStack testStack.c graph.c Stack.c tools.c -lm
 
 clean:
 	rm -f *.o graph_coloring testStack

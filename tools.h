@@ -9,6 +9,18 @@
 #include "graph.h"
 
 /*
+ * Keeps track of all the memory allocated in the program.
+ * If the memory allocation fails, all the memory allocated in the program will
+ * be freed and the program will exit with the error code 1.
+ */
+void *allocateMemory(size_t size);
+
+/*
+ * Frees all the memory allocated on the heap
+ */
+void freeMemory(void);
+
+/*
  * Checks whether a vertex matches the conditions to be in the s4 stack
  */
 bool vertexMatchesConditionsForS4(Vertex *vertex);
