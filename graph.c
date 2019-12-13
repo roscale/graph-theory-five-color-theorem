@@ -4,6 +4,10 @@
 #include <math.h>
 #include "graph.h"
 
+#ifndef M_PI
+	#define M_PI 3.14159265358979323846
+#endif
+
 void initialiserGraphe(GRAPHE *g) {
 	g->nbS = 0;
 	g->nbA = 0;
