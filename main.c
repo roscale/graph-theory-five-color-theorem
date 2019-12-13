@@ -149,7 +149,7 @@ int main() {
 		addEdge(graph3, g, h);
 	}
 
-	colorGraph(graph2);
+	colorGraph(graph3);
 
 	return 0;
 }

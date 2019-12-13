@@ -103,7 +103,7 @@ placement=htp,
 
 	\section{Description de l'algorithme}
 	\paragraph*{}
-	On commence par créer 3 piles qui vont contenir chacune des sommets du graphe ayant certaines propriétés. On itère la liste de sommets du graphe et on ajoute chaque sommet dans la pile qui lui correspond. À l'étape suivante (l'étape 2), tant que la pile qui ne contient que des sommets de degré 4, n'est pas vide, on retire un sommet au dessus de la pile, on l'efface du graphe et on l'ajoute à la pile qui contient les sommets éffacés du graphe. On vérifie tous ses voisins et on les ajoute aux piles correspondentes s'ils ne le sont pas déjà.
+	On commence par créer 3 piles qui vont contenir chacune des sommets du graphe ayant certaines propriétés. On itère la liste de sommets du graphe et on ajoute chaque sommet dans la pile qui lui correspond. À l'étape suivante (l'étape 2), tant que la pile qui ne contient que des sommets de degré 4, n'est pas vide, on retire un sommet au dessus de la pile, on l'efface du graphe et on l'ajoute à la pile qui contient les sommets effacés du graphe. On vérifie tous ses voisins et on les ajoute aux piles correspondantes s'ils ne le sont pas déjà.
 	\paragraph{}
 	Ensuite, si le graphe n'est pas vide, on arrive à un graphe planaire de degré minimum 5. On prend un sommet du graphe et on arrange ses voisins dans l'ordre planaire des aiguilles d'une montre. Si le premier et le troisième voisin ne sont pas voisins entre eux, on les fusionne en un seul sommet. Sinon, on fusionne le deuxième et le quatrième sommet. Ensuite, on efface du graphe le sommet de départ. Lors de cette fusion, les degrés des sommets ont changé, donc on actualise toutes les piles pour être conformes à l'état du graphe. On revient à l'étape 2 et on répète la procédure.
 	\paragraph{}
@@ -111,8 +111,8 @@ placement=htp,
 
 	\newpage
 	\section{Tests}
-	Afin de tester notre code, nous avons choisit trois graphes différents et avons essayé de les colorier, tout en mesurant le temps d'exécution du code pour chacun d'entre eux. Pour chaque graphe on a fait donc 5 mesures de temps et ensuite on a fait leur moyenne. \par
-	Voici les graphes avec lesquels on a travaillé, avec une représentation avant/après coloriage, mais aussi le temps moyen\footnote{Le temps d'exécution a été calculé grace à la fonction "gettimeofday" se trouvant dans <sys/time.h>} qu'il a fallu à l'algorithme pour les colorier : 
+	Afin de tester notre code, nous avons choisi trois graphes différents et avons essayé de les colorier, tout en mesurant le temps d'exécution du code pour chacun d'entre eux. Pour chaque graphe on a fait donc 5 mesures de temps et ensuite on a fait leur moyenne. \par
+	Voici les graphes avec lesquels on a travaillé, avec une représentation avant/après coloriage, mais aussi le temps moyen\footnote{Le temps d'exécution a été calculé grâce à la fonction "gettimeofday" se trouvant dans <sys/time.h>} qu'il a fallu à l'algorithme pour les colorier : 
 	\begin{itemize}
 		\item Graphe 1, qui est un graphe dont le degré $\in \{2, 4\}$:
 		\begin{itemize}
@@ -159,7 +159,7 @@ placement=htp,
 
 	\section{Difficultés rencontrés}
 	\paragraph{}
-	Comme on l'a déjà dit dans l'introduction, le pseudocode était un peu ambigu. Parfois les étapes étaient écrites explicitement, parfois on devait les déduire du contexte, ce qui a rendu la compréhension difficile. Par rapport à l'implémentation, l'étape la plus compliquée était de fusionner 2 sommets en un seul car il faut faire très attention à bien mettre à jour l'état de tous les voisins. C'est très facile de se tromper en travaillant avec des listes chaînéés. Le débugger visuel était indispensable. En reste, il y avait un manque de confiance dans le code car on ne savait pas si on implémente les étapes correctement. En faisant une simulation entière sur papier nous a permis d'avoir une source de référence de l'état de la mémoire qu'on devait avoir à chaque étape.
+	Comme on l'a déjà dit dans l'introduction, le pseudo-code était un peu ambigu. Parfois les étapes étaient écrites explicitement, parfois on devait les déduire du contexte, ce qui a rendu la compréhension difficile. Par rapport à l'implémentation, l'étape la plus compliquée était de fusionner 2 sommets en un seul car il faut faire très attention à bien mettre à jour l'état de tous les voisins. C'est très facile de se tromper en travaillant avec des listes chaînées. Le débugger visuel était indispensable. En reste, il y avait un manque de confiance dans le code car on ne savait pas si on implémente les étapes correctement. En faisant une simulation entière sur papier nous a permis d'avoir une source de référence de l'état de la mémoire qu'on devait avoir à chaque étape.
 
 	\section{Références}
 	\begin{itemize}
